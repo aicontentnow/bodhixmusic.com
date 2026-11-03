@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Black Hat Villain | BODHI X</title>
+<meta name="description" content="Black Hat Villain: five-piece hard rock out of Victoria, BC, with Scotty Tuesday out front. The My Generation EP, the Fox Seeds finals, the Commodore.">
+<link rel="canonical" href="https://bodhixmusic.com/black-hat-villain/">
+<link rel="icon" type="image/svg+xml" href="/assets/marks/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#121110">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BODHI X">
+<meta property="og:title" content="Black Hat Villain | BODHI X">
+<meta property="og:description" content="Five-piece hard rock out of Victoria, BC. The My Generation EP, the Fox Seeds finals, the Commodore.">
+<meta property="og:url" content="https://bodhixmusic.com/black-hat-villain/">
+<meta property="og:image" content="https://bodhixmusic.com/assets/rooms/black-hat-villain/og-black-hat-villain.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The cover of My Generation by Black Hat Villain: white lettering over a dark brick wall with red splatter and black flourishes.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/rooms/black-hat-villain/oswald-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/tokens/tokens.css">
+<link rel="stylesheet" href="/assets/css/bodhix.css">
+<style>
+@font-face{font-family:"Oswald";src:url("/assets/rooms/black-hat-villain/oswald-latin-400-normal.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Oswald";src:url("/assets/rooms/black-hat-villain/oswald-latin-600-normal.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Special Elite";src:url("/assets/rooms/black-hat-villain/special-elite-latin-400-normal.woff2") format("woff2");font-weight:400;font-display:swap}
+
+:root{
+  --bhv-black:#121110;
+  --bhv-wall:#1C1A18;
+  --bhv-ash:#2A2724;
+  --bhv-bone:#EDE6D6;
+  --bhv-smoke:#A39C90;
+  --bhv-blood:#C4271E;
+  --bhv-blood-deep:#7E1712;
+  --gutter:max(16px,env(safe-area-inset-left,0px));
+}
+*{box-sizing:border-box}
+html{background:var(--bhv-black)}
+body{margin:0;min-height:100vh;color:var(--bhv-bone);font-family:"Special Elite","Courier New",monospace;font-size:16px;line-height:1.65;
+  background:
+    radial-gradient(120% 80% at 50% 0%,rgba(196,39,30,.10),transparent 60%),
+    repeating-linear-gradient(0deg,transparent 0 37px,rgba(0,0,0,.35) 37px 39px),
+    repeating-linear-gradient(90deg,transparent 0 76px,rgba(0,0,0,.22) 76px 78px),
+    var(--bhv-wall);
+  background-attachment:fixed;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.22;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit}
+.wrap{position:relative;z-index:1;max-width:920px;margin:0 auto;padding:0 var(--gutter)}
+
+/* BODHI X spine strip: the way home, same on every page */
+.spine{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:calc(env(safe-area-inset-top,0px) + 10px) var(--gutter) 10px;font-family:"Inter",system-ui,sans-serif}
+.spine a{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;color:var(--bhv-bone);font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-variation-settings:"opsz" 32}
+.spine a:hover,.spine a:focus-visible{color:#fff}
+.spine .home span{font-size:12px;letter-spacing:.30em}
+.spine img{display:block}
+
+/* hero */
+.hero{display:grid;gap:28px;align-items:center;padding:28px 0 8px}
+@media (min-width:760px){.hero{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:44px;padding-top:48px}}
+.cover{margin:0;position:relative}
+.cover img{display:block;width:100%;height:auto;box-shadow:0 24px 60px rgba(0,0,0,.65),0 0 0 1px rgba(237,230,214,.08);transform:rotate(-1.2deg)}
+.cover figcaption{position:absolute;right:-6px;bottom:-14px;transform:rotate(2deg);background:var(--bhv-blood);color:#fff;font-family:"Oswald",sans-serif;font-weight:600;font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px;box-shadow:0 6px 16px rgba(0,0,0,.5)}
+.kicker{font-family:"Oswald",sans-serif;font-weight:400;font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--bhv-smoke);margin:0 0 10px}
+h1{font-family:"Oswald",sans-serif;font-weight:600;text-transform:uppercase;font-size:clamp(46px,11vw,92px);line-height:.92;letter-spacing:.02em;margin:0;color:var(--bhv-bone);text-shadow:3px 3px 0 var(--bhv-blood-deep)}
+.lede{font-size:17px;margin:18px 0 0;color:var(--bhv-bone)}
+.lede strong{font-weight:400;color:#fff;background:linear-gradient(transparent 62%,rgba(196,39,30,.55) 62%)}
+
+/* sections */
+section{padding:44px 0 0}
+h2{font-family:"Oswald",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.2em;font-size:15px;margin:0 0 16px;color:var(--bhv-bone);display:flex;align-items:center;gap:14px}
+h2::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--bhv-blood),transparent)}
+.story p{margin:0 0 16px;max-width:62ch;color:#D9D1C1}
+.story p:first-letter{font-family:"Oswald",sans-serif;font-weight:600;font-size:1.5em;color:var(--bhv-blood)}
+
+.listen .player{border:0;width:100%;max-width:640px;height:120px;display:block;background:var(--bhv-ash)}
+.tracks{list-style:none;margin:0;padding:0;max-width:640px;counter-reset:t}
+.tracks li{counter-increment:t;display:flex;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px dashed rgba(237,230,214,.16)}
+.tracks li::before{content:counter(t,decimal-leading-zero);font-family:"Oswald",sans-serif;color:var(--bhv-blood);font-size:14px;letter-spacing:.1em;min-width:2ch}
+.tracks .t{flex:1;font-family:"Oswald",sans-serif;font-weight:400;font-size:19px;letter-spacing:.04em;text-transform:uppercase}
+.tracks .d{color:var(--bhv-smoke);font-size:14px}
+.note{color:var(--bhv-smoke);font-size:14px;margin:14px 0 0;max-width:62ch}
+
+.lineup{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:10px;max-width:760px;margin:0;padding:0;list-style:none}
+.lineup li{background:rgba(0,0,0,.35);border:1px solid rgba(237,230,214,.1);padding:14px 16px}
+.lineup b{display:block;font-family:"Oswald",sans-serif;font-weight:600;font-size:18px;letter-spacing:.04em;text-transform:uppercase;color:var(--bhv-bone)}
+.lineup span{color:var(--bhv-smoke);font-size:14px}
+
+.go{display:flex;flex-wrap:wrap;gap:12px}
+.go a{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;text-decoration:none;font-family:"Oswald",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;border:2px solid var(--bhv-bone);color:var(--bhv-bone);transition:background .2s,color .2s,border-color .2s}
+.go a.hot{background:var(--bhv-blood);border-color:var(--bhv-blood);color:#fff}
+.go a:hover,.go a:focus-visible{background:var(--bhv-bone);border-color:var(--bhv-bone);color:var(--bhv-black)}
+a:focus-visible{outline:2px solid var(--bhv-blood);outline-offset:3px}
+
+.foot{position:relative;z-index:1;margin-top:64px;padding:22px var(--gutter) calc(env(safe-area-inset-bottom,0px) + 26px);border-top:1px solid rgba(237,230,214,.1);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center;font-family:"Inter",system-ui,sans-serif;font-size:12px;color:var(--bhv-smoke)}
+.foot a{text-decoration:none;letter-spacing:.24em;text-transform:uppercase;font-size:11px;min-height:44px;display:inline-flex;align-items:center}
+.foot a:hover{color:var(--bhv-bone)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="spine">
+  <a class="home" href="/" aria-label="BODHI X home"><img src="/assets/marks/ring-year.svg" alt="" width="20" height="20"><span>BODHI X</span></a>
+  <a href="/#eras-title">All rooms</a>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <figure class="cover">
+      <img src="/assets/rooms/black-hat-villain/my-generation-1200.jpg" srcset="/assets/rooms/black-hat-villain/my-generation-600.jpg 600w, /assets/rooms/black-hat-villain/my-generation-1200.jpg 1200w" sizes="(min-width:760px) 460px, 92vw" width="1200" height="1112" alt="The cover of My Generation: Black Hat Villain in white lettering over a dark brick wall, red splatter and black flourishes.">
+    </figure>
+    <div>
+      <p class="kicker">Victoria, BC · 2009 to 2011</p>
+      <h1>Black Hat Villain</h1>
+      <p class="lede">Five-piece hard rock with <strong>Scotty Tuesday</strong> out front.</p>
+    </div>
+  </div>
+
+  <section class="story" aria-labelledby="story-h">
+    <h2 id="story-h">The story</h2>
+    <p>After SEASØNS, life moved back to Victoria. Friends from the old neighbourhood had a band and needed a singer, and Scotty Tuesday stepped up front in 2009.</p>
+    <p>My Generation, the EP, was cut at Infinity Studios in Victoria with Adam Sutherland. It carried the band into the finals of 99.3 The Fox's Seeds competition, where they finished second, onto the stage at the Commodore, and out on the road around BC and Alberta.</p>
+    <p>Hard rock is hard on a voice. In April 2011 Scotty stepped away to put family and steady work first. No hard feelings. The band played on.</p>
+  </section>
+
+  <section class="listen" aria-labelledby="listen-h">
+    <h2 id="listen-h">Listen</h2>
+    <iframe class="player" title="My Generation by Black Hat Villain, on Bandcamp" loading="lazy" src="https://bandcamp.com/EmbeddedPlayer/album=2894257248/size=large/bgcol=1c1a18/linkcol=c4271e/tracklist=false/artwork=none/transparent=true/" seamless></iframe>
+    <ol class="tracks" aria-label="My Generation track list">
+      <li><span class="t">My Generation</span><span class="d">3:14</span></li>
+      <li><span class="t">One Way Street</span><span class="d">2:56</span></li>
+      <li><span class="t">Rain or Shine</span><span class="d">3:58</span></li>
+      <li><span class="t">All My Friends Are Dead</span><span class="d">3:10</span></li>
+      <li><span class="t">Country</span><span class="d">3:51</span></li>
+      <li><span class="t">Creature</span><span class="d">3:05</span></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="band-h">
+    <h2 id="band-h">The band</h2>
+    <ul class="lineup">
+      <li><b>Scotty Tuesday</b><span>Vocals, lyrics</span></li>
+      <li><b>Sam Edmundson</b><span>Guitar, lyrics</span></li>
+      <li><b>Abe Cox</b><span>Guitar</span></li>
+      <li><b>Ian Chisholm</b><span>Bass</span></li>
+      <li><b>Tim Sweeting</b><span>Drums</span></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="more-h">
+    <h2 id="more-h">More</h2>
+    <div class="go">
+      <a class="hot" href="https://scottytuesday.bandcamp.com/album/my-generation" target="_blank" rel="me noopener">Get the EP on Bandcamp</a>
+      <a href="https://www.youtube.com/@TheBlackHatNation" target="_blank" rel="me noopener">Videos on YouTube</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <span>Black Hat Villain is a room in the BODHI X house.</span>
+  <a href="/">Back to BODHI X</a>
+</footer>
+</body>
+</html>

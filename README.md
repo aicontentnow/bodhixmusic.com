@@ -79,3 +79,10 @@ The domain is registered at Spaceship (registered to 2027-10-29). Records in Spa
 - No mailing list yet; a spot is left on the home page.
 - The repo is public (free GitHub Pages).
 - No email at the domain yet.
+
+## Room pages
+
+Each older era can have its own room page at `/<room>/` that looks like that era's album, not like the calm home page. The home page stays in the SEASØNS spine look; the room is where the album's own style lives. Every room page keeps the BODHI X strip at the top (ring and BODHI X, linking home) and a "Back to BODHI X" link at the bottom.
+
+- `/black-hat-villain/`: dark brick, bone white, blood red, Oswald and Special Elite (fonts self-hosted in `assets/rooms/black-hat-villain/` with their licences). My Generation cover, story, Bandcamp player, line-up, links to Bandcamp and youtube.com/@TheBlackHatNation.
+- Never use an album cover that shows Bodhi's face (The Fifth Floor and Unreleased Gems covers are photos of people, so those rooms need other art).

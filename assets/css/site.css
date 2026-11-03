@@ -57,3 +57,5 @@ main,.hero,.seasons,.eras-wrap,.follow{min-width:0;max-width:100%}
 .era-links .bx-tb{display:inline-flex;align-items:center;text-decoration:none;color:var(--ink)}
 .era-links .bx-tb:hover,.era-links .bx-tb:focus-visible{border-bottom-color:currentColor}
 .bx-era.all:hover .bx-title,.bx-era.all:focus-visible .bx-title{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+/* rooms grid: three across on wide screens so nine rooms sit in a square */
+.eras-wrap .bx-eras{max-width:780px}
