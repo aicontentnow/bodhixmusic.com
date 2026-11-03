@@ -49,6 +49,12 @@ button{font:inherit;color:inherit}
   padding-top:calc(env(safe-area-inset-top,0px) + 6px);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .top .tb{pointer-events:auto}
 .views{display:flex;gap:20px}
+.top-r{display:flex;align-items:center;gap:20px}
+.home-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:inherit}.home-link img{display:block}
+@media (max-width:420px){.top-r,.views{gap:14px}}
+@media (max-width:359px){.home-link .bx-caps{display:none}}
+.sheet-home{text-decoration:none;display:inline-flex}
+#sheet p a{color:inherit;text-underline-offset:3px;text-decoration-color:var(--ghost,#D8D2C6)}
 
 #centre{position:fixed;left:50%;top:40%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none;z-index:2}
 #ctitle{white-space:nowrap;margin:0;font-size:22px;line-height:1.2;letter-spacing:.30em;margin-right:-.30em;font-weight:300;transition:opacity .45s ease,color .6s ease,transform .45s ease}
@@ -120,11 +126,14 @@ button{font:inherit;color:inherit}
 <canvas id="c" tabindex="0" aria-label="The SEASØNS branch circle. Drag around it, or use the arrow keys, to wind through the year."></canvas>
 
 <div class="top">
+  <a class="bx-tb tb home-link" href="/" aria-label="BODHI X home"><img src="/assets/marks/ring-year.svg" alt="" width="18" height="18"><span class="bx-caps">BODHI X</span></a>
+  <div class="top-r">
   <div class="views" role="group" aria-label="What the circle lights">
     <button class="bx-tb tb mode" id="todayBtn" type="button" aria-pressed="false">Today</button>
     <button class="bx-tb tb mode" id="wholeBtn" type="button" aria-pressed="false">Whole year</button>
   </div>
   <button class="bx-tb tb" id="notesBtn" type="button" aria-expanded="false" aria-controls="sheet">Notes</button>
+  </div>
 </div>
 
 <div id="centre">
@@ -149,7 +158,6 @@ button{font:inherit;color:inherit}
 
 <div class="dock">
   <div class="dock-in">
-    <div class="row home-row"><a class="bx-tb tb" href="/">BODHI X</a></div>
     <p id="msg" aria-live="polite"></p>
   </div>
 </div>
@@ -205,6 +213,9 @@ button{font:inherit;color:inherit}
     <div>
       <h3>Follow</h3>
       <p><a href="https://www.youtube.com/@bodhixmusic" target="_blank" rel="me noopener">YouTube</a>, <a href="https://www.instagram.com/bodhixmusic" target="_blank" rel="me noopener">Instagram</a>, <a href="https://www.tiktok.com/@bodhixmusic" target="_blank" rel="me noopener">TikTok</a>, <a href="https://www.facebook.com/bodhixmusic" target="_blank" rel="me noopener">Facebook</a>. bodhixmusic everywhere.</p>
+    </div>
+    <div>
+      <p><a class="bx-seed sheet-home" href="/"><img src="/assets/marks/ring-year.svg" alt="" width="20" height="20"><span>Back to BODHI X</span></a></p>
     </div>
   </div>
 </aside>
