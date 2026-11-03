@@ -86,6 +86,6 @@ Each older era can have its own room page at `/<room>/` that looks like that era
 
 - `/black-hat-villain/`: dark brick, bone white, blood red, Oswald and Special Elite (fonts self-hosted in `assets/rooms/black-hat-villain/` with their licences). My Generation cover, story, Bandcamp player, line-up, links to Bandcamp and youtube.com/@TheBlackHatNation.
 
-- `/heavy-sun/`, `/the-next-t-shirt/`, `/the-originals/`, `/the-marriage-years/`: built by `build-rooms.py` (kept beside the repo in the session; text and track lists live in it). Each wears its album: Heavy Sun sunburst and marker type; the next t-shirt handwriting with the red "the"; the 2008 SEASONS circles in Baskerville with the four 2019 remaster covers; Unreleased Gems sky blue, orange and Josefin Sans. Fonts self-hosted in `assets/rooms/fonts/` with their licences.
+- `/heavy-sun/`, `/the-next-t-shirt/`, `/the-originals/`, `/the-marriage-years/`: built by `tools/build-rooms.py` (text and track lists live in it; run it with the fonts and covers folders to rebuild). Each wears its album: Heavy Sun sunburst and marker type; the next t-shirt handwriting with the red "the"; the 2008 SEASONS circles in Baskerville with the four 2019 remaster covers; Unreleased Gems sky blue, orange and Josefin Sans. Fonts self-hosted in `assets/rooms/fonts/` with their licences.
 - Album covers that show Bodhi are fine (Bodhi, 2026-11-03): The Fifth Floor and Unreleased Gems use their real covers.
 - The home page shows only a blurb and an Enter the room button per room. All outside links live inside the rooms.
