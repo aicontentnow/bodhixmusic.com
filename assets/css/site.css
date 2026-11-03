@@ -51,8 +51,9 @@ main{max-width:1040px;margin:0 auto;display:grid;gap:var(--space-9)}
 main,.hero,.seasons,.eras-wrap,.follow{min-width:0;max-width:100%}
 .eras-wrap .bx-eras{grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr))}
 .bx-era,.bx-era .bx-title{min-width:0;overflow-wrap:anywhere}
-/* rooms grid: three across on wide screens so nine rooms sit in a square */
-.eras-wrap .bx-eras{max-width:780px}
+/* rooms grid: four across on wide screens so eight rooms sit in two rows */
+.eras-wrap .bx-eras{max-width:1040px}
+@media (min-width:900px){.eras-wrap .bx-eras{grid-template-columns:repeat(4,minmax(0,1fr))}}
 /* room links v2: stacked, look like buttons, platform icon first */
 .bx-era.linked{background:var(--paper)}
 .era-links{display:flex;flex-direction:column;align-items:stretch;gap:8px;margin-top:auto;padding-top:6px}

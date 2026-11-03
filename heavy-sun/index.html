@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Heavy Sun | BODHI X</title>
+<meta name="description" content="Heavy Sun: the first band. Victoria to Vancouver, 1994 to 2002. Greatest Hits on Bandcamp.">
+<link rel="canonical" href="https://bodhixmusic.com/heavy-sun/">
+<link rel="icon" type="image/svg+xml" href="/assets/marks/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#FBF3E2">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BODHI X">
+<meta property="og:title" content="Heavy Sun | BODHI X">
+<meta property="og:description" content="Heavy Sun: the first band. Victoria to Vancouver, 1994 to 2002. Greatest Hits on Bandcamp.">
+<meta property="og:url" content="https://bodhixmusic.com/heavy-sun/">
+<meta property="og:image" content="https://bodhixmusic.com/assets/rooms/heavy-sun/og-heavy-sun.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/rooms/fonts/permanent-marker-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/tokens/tokens.css">
+<link rel="stylesheet" href="/assets/css/bodhix.css">
+<style>
+@font-face{font-family:"Permanent Marker";src:url("/assets/rooms/fonts/permanent-marker-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Barlow Condensed";src:url("/assets/rooms/fonts/barlow-condensed-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Barlow Condensed";src:url("/assets/rooms/fonts/barlow-condensed-latin-600-normal.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+:root{--bg:#FBF3E2;--ink:#1D1A17;--ink-2:#6B5E50;--title:#1D1A17;--accent:#C8441C;--on-accent:#fff;--rule:linear-gradient(90deg,#E8892B,#C8441C,transparent);--line:rgba(29,26,23,.14);--card:rgba(255,255,255,.6);--player-bg:#fff;--spine:#1D1A17;--cover-shadow:0 18px 40px rgba(120,60,10,.25);--title-font:"Permanent Marker",cursive;--label-font:"Barlow Condensed",sans-serif;--body-font:"Barlow Condensed",sans-serif;--page-bg:radial-gradient(60% 50% at 50% 0%,rgba(242,176,53,.35),transparent 70%),repeating-conic-gradient(from 0deg at 50% -10%,rgba(232,137,43,.10) 0 6deg,transparent 6deg 12deg),#FBF3E2}
+
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:var(--body-font);font-size:17px;line-height:1.65;background:var(--page-bg);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{position:relative;z-index:1;max-width:940px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px))}
+.spine{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:calc(env(safe-area-inset-top,0px) + 10px) max(16px,env(safe-area-inset-left,0px)) 10px;font-family:"Inter",system-ui,sans-serif}
+.spine a{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;color:var(--spine);font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-variation-settings:"opsz" 32}
+.spine .home span{font-size:12px;letter-spacing:.30em}
+.spine img{display:block}
+.hero{display:grid;gap:28px;align-items:center;padding:28px 0 8px}
+@media (min-width:760px){.hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;padding-top:44px}}
+.cover{margin:0}
+.cover img{display:block;width:100%;height:auto;box-shadow:var(--cover-shadow)}
+.kicker{font-family:var(--label-font);font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-2);margin:0 0 10px}
+h1{font-family:var(--title-font);margin:0;line-height:.95;color:var(--title)}
+.lede{font-size:19px;margin:18px 0 0}
+section{padding:46px 0 0}
+h2{font-family:var(--label-font);font-weight:var(--h2-weight,600);text-transform:uppercase;letter-spacing:.2em;font-size:14px;margin:0 0 18px;display:flex;align-items:center;gap:14px;color:var(--ink)}
+h2::after{content:"";flex:1;height:2px;background:var(--rule)}
+h3{font-family:var(--title-font);font-weight:400;margin:0 0 6px;font-size:28px;line-height:1.1;color:var(--title)}
+.story p{margin:0 0 16px;max-width:64ch}
+.album{display:grid;gap:22px;margin:0 0 34px}
+@media (min-width:760px){.album{grid-template-columns:220px minmax(0,1fr);gap:32px;align-items:start}}
+.album .cover img{box-shadow:var(--cover-shadow)}
+.meta{color:var(--ink-2);font-size:14px;margin:0 0 14px;font-family:var(--label-font);letter-spacing:.12em;text-transform:uppercase}
+.player{border:0;width:100%;max-width:640px;display:block;background:var(--player-bg);margin:0 0 6px}
+.tracks{list-style:none;margin:0;padding:0;max-width:640px;counter-reset:t}
+.tracks li{counter-increment:t;display:flex;align-items:baseline;gap:14px;padding:9px 0;border-bottom:1px solid var(--line)}
+.tracks li::before{content:counter(t,decimal-leading-zero);font-family:var(--label-font);color:var(--accent);font-size:14px;min-width:2ch}
+.tracks .t{flex:1}
+.tracks .d{color:var(--ink-2);font-size:14px;font-variant-numeric:tabular-nums}
+.more-tracks summary{cursor:pointer;min-height:44px;display:inline-flex;align-items:center;font-family:var(--label-font);letter-spacing:.18em;text-transform:uppercase;font-size:13px;color:var(--accent);border-bottom:1px solid currentColor}
+.more-tracks[open] summary{margin-bottom:10px}
+.note{color:var(--ink-2);font-size:15px;margin:14px 0 0;max-width:64ch}
+.lineup{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:10px;max-width:780px;margin:0;padding:0;list-style:none}
+.lineup li{background:var(--card);border:1px solid var(--line);padding:14px 16px}
+.lineup b{display:block;font-family:var(--label-font);font-weight:600;font-size:17px;letter-spacing:.04em;color:var(--ink)}
+.lineup span{color:var(--ink-2);font-size:14px}
+.btns{display:flex;flex-direction:column;gap:10px;max-width:420px}
+.btn{display:flex;align-items:center;gap:12px;min-height:52px;padding:0 18px;text-decoration:none;font-family:var(--label-font);font-weight:600;font-size:14px;letter-spacing:.16em;text-transform:uppercase;border:2px solid var(--ink);color:var(--ink);background:transparent;transition:background .2s,color .2s,border-color .2s}
+.btn .ico{width:20px;height:20px;fill:currentColor;flex:none}
+.btn.hot{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn:hover,.btn:focus-visible{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.foot{position:relative;z-index:1;margin-top:64px;padding:22px max(16px,env(safe-area-inset-left,0px)) calc(env(safe-area-inset-bottom,0px) + 26px);border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center;font-family:"Inter",system-ui,sans-serif;font-size:12px;color:var(--ink-2)}
+.foot a{text-decoration:none;letter-spacing:.24em;text-transform:uppercase;font-size:11px;min-height:44px;display:inline-flex;align-items:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+body{font-size:19px;background-attachment:fixed}h1{font-size:clamp(56px,13vw,112px);color:#1D1A17;transform:rotate(-2deg);text-shadow:4px 4px 0 #F2B035}.lede{font-size:22px}.tracks .t{font-size:19px}.kicker{color:#C8441C}
+</style>
+</head>
+<body>
+<svg class="icon-sprite" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg"><symbol id="i-bandcamp" viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></symbol></svg>
+<header class="spine">
+  <a class="home" href="/" aria-label="BODHI X home"><img src="/assets/marks/ring-year.svg" alt="" width="20" height="20"><span>BODHI X</span></a>
+  <a href="/#eras-title">All rooms</a>
+</header>
+<main class="wrap">
+<div class="hero">
+  <figure class="cover"><img src="/assets/rooms/heavy-sun/greatest-hits-1200.jpg" srcset="/assets/rooms/heavy-sun/greatest-hits-600.jpg 600w, /assets/rooms/heavy-sun/greatest-hits-1200.jpg 500w" sizes="(min-width:760px) 440px, 92vw" width="500" height="500" alt="Heavy Sun Greatest Hits cover: a blazing orange sun with HEAVY SUN across it."></figure>
+  <div><p class="kicker">Victoria to Vancouver · 1994 to 2002</p><h1>Heavy Sun</h1><p class="lede">The first band. Started at 19.</p></div>
+</div>
+<section class="story" aria-labelledby="s1"><h2 id="s1">The story</h2>
+<p>Heavy Sun started in Victoria in 1994, with Scott Valentine on vocals, lyrics and guitar. For eight years the band wrote its own songs and recorded them itself.</p>
+<p>In 1998 Scott and guitarist Jason Jarvis moved to Vancouver to chase music full time. The search for a new drummer led to Clayton Wolsey, and that led to the next band, The Next T&#8209;Shirt.</p>
+<p>Greatest Hits is an unofficial look back at those years: fifteen songs, no official artwork, no official release. Just where it all started.</p>
+</section>
+<section aria-labelledby="s2"><h2 id="s2">Listen</h2>
+<div class="album">
+  <figure class="cover"><img src="/assets/rooms/heavy-sun/greatest-hits-1200.jpg" srcset="/assets/rooms/heavy-sun/greatest-hits-600.jpg 600w, /assets/rooms/heavy-sun/greatest-hits-1200.jpg 500w" sizes="(min-width:760px) 220px, 92vw" width="500" height="500" alt="Cover of Greatest Hits by Heavy Sun" loading="lazy"></figure>
+  <div>
+    <h3>Greatest Hits</h3>
+    <p class="meta">Recordings 1994 to 2002 · 15 songs</p>
+    <iframe class="player" style="height:120px" title="Greatest Hits by Heavy Sun on Bandcamp" loading="lazy" src="https://bandcamp.com/EmbeddedPlayer/album=3177103140/size=large/bgcol=fbf3e2/linkcol=c8441c/tracklist=false/artwork=none/transparent=true/" seamless></iframe>
+    <ol class="tracks" aria-label="Greatest Hits by Heavy Sun track list"><li><span class="t">Lady Lucifer</span><span class="d">4:38</span></li><li><span class="t">Fall</span><span class="d">4:39</span></li><li><span class="t">Whose Gonna Tell Your Baby Boy You Think His Future Doesn&#x27;t Matter?</span><span class="d">5:58</span></li><li><span class="t">Mourning Light</span><span class="d">4:45</span></li><li><span class="t">Vision</span><span class="d">3:52</span></li><li><span class="t">Save The World</span><span class="d">3:53</span></li><li><span class="t">Princess</span><span class="d">3:32</span></li><li><span class="t">Million Dollar Sweepstakes</span><span class="d">3:24</span></li><li><span class="t">Awake</span><span class="d">5:42</span></li><li><span class="t">Goodnight Gentle Soul</span><span class="d">3:35</span></li><li><span class="t">Gone</span><span class="d">5:10</span></li><li><span class="t">I Found Love In U</span><span class="d">3:11</span></li><li><span class="t">Caveman</span><span class="d">5:23</span></li><li><span class="t">Chicken</span><span class="d">2:49</span></li><li><span class="t">Mommy</span><span class="d">4:04</span></li></ol>
+    
+    
+  </div>
+</div>
+</section>
+<section aria-labelledby="s3"><h2 id="s3">The band</h2>
+<ul class="lineup"><li><b>Scott Valentine</b><span>Vocals, lyrics, guitars</span></li><li><b>Jason Jarvis</b><span>Guitars, piano</span></li><li><b>Mike Boyenga</b><span>Bass</span></li><li><b>Steve MacMillan</b><span>Drums</span></li><li><b>Clayton Wolsey</b><span>Drums</span></li></ul>
+</section>
+<section aria-labelledby="s4"><h2 id="s4">More</h2><div class="btns">
+<a class="btn hot" href="https://scottytuesday.bandcamp.com/album/greatest-hits" target="_blank" rel="me noopener"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-bandcamp"/></svg><span>Greatest Hits on Bandcamp</span></a>
+<a class="btn" href="https://scottytuesday.bandcamp.com" target="_blank" rel="me noopener"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-bandcamp"/></svg><span>Every album on Bandcamp</span></a>
+</div></section>
+</main>
+<footer class="foot">
+  <span>Heavy Sun is a room in the BODHI X house.</span>
+  <a href="/">Back to BODHI X</a>
+</footer>
+</body>
+</html>

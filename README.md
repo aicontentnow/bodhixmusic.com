@@ -85,4 +85,7 @@ The domain is registered at Spaceship (registered to 2027-10-29). Records in Spa
 Each older era can have its own room page at `/<room>/` that looks like that era's album, not like the calm home page. The home page stays in the SEASØNS spine look; the room is where the album's own style lives. Every room page keeps the BODHI X strip at the top (ring and BODHI X, linking home) and a "Back to BODHI X" link at the bottom.
 
 - `/black-hat-villain/`: dark brick, bone white, blood red, Oswald and Special Elite (fonts self-hosted in `assets/rooms/black-hat-villain/` with their licences). My Generation cover, story, Bandcamp player, line-up, links to Bandcamp and youtube.com/@TheBlackHatNation.
-- Never use an album cover that shows Bodhi's face (The Fifth Floor and Unreleased Gems covers are photos of people, so those rooms need other art).
+
+- `/heavy-sun/`, `/the-next-t-shirt/`, `/the-originals/`, `/the-marriage-years/`: built by `build-rooms.py` (kept beside the repo in the session; text and track lists live in it). Each wears its album: Heavy Sun sunburst and marker type; the next t-shirt handwriting with the red "the"; the 2008 SEASONS circles in Baskerville with the four 2019 remaster covers; Unreleased Gems sky blue, orange and Josefin Sans. Fonts self-hosted in `assets/rooms/fonts/` with their licences.
+- Album covers that show Bodhi are fine (Bodhi, 2026-11-03): The Fifth Floor and Unreleased Gems use their real covers.
+- The home page shows only a blurb and an Enter the room button per room. All outside links live inside the rooms.

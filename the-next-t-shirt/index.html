@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Next T-Shirt | BODHI X</title>
+<meta name="description" content="The Next T-Shirt: a Vancouver trio, 2003 to 2005. Two records, the next t-shirt and The Fifth Floor, on Bandcamp.">
+<link rel="canonical" href="https://bodhixmusic.com/the-next-t-shirt/">
+<link rel="icon" type="image/svg+xml" href="/assets/marks/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BODHI X">
+<meta property="og:title" content="The Next T-Shirt | BODHI X">
+<meta property="og:description" content="The Next T-Shirt: a Vancouver trio, 2003 to 2005. Two records, the next t-shirt and The Fifth Floor, on Bandcamp.">
+<meta property="og:url" content="https://bodhixmusic.com/the-next-t-shirt/">
+<meta property="og:image" content="https://bodhixmusic.com/assets/rooms/the-next-t-shirt/og-the-next-t-shirt.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/rooms/fonts/caveat-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/tokens/tokens.css">
+<link rel="stylesheet" href="/assets/css/bodhix.css">
+<style>
+@font-face{font-family:"Caveat";src:url("/assets/rooms/fonts/caveat-latin-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Work Sans";src:url("/assets/rooms/fonts/work-sans-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Work Sans";src:url("/assets/rooms/fonts/work-sans-latin-600-normal.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+:root{--bg:#FFFFFF;--ink:#161616;--ink-2:#6A6A6A;--title:#161616;--accent:#A8201A;--on-accent:#fff;--rule:#161616;--line:rgba(0,0,0,.12);--card:#fff;--player-bg:#fff;--spine:#161616;--cover-shadow:0 0 0 1px rgba(0,0,0,.1),0 14px 30px rgba(0,0,0,.12);--title-font:"Caveat",cursive;--label-font:"Work Sans",sans-serif;--body-font:"Work Sans",sans-serif;--page-bg:repeating-linear-gradient(0deg,transparent 0 31px,rgba(70,110,200,.07) 31px 32px),#fff}
+
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:var(--body-font);font-size:17px;line-height:1.65;background:var(--page-bg);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{position:relative;z-index:1;max-width:940px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px))}
+.spine{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:calc(env(safe-area-inset-top,0px) + 10px) max(16px,env(safe-area-inset-left,0px)) 10px;font-family:"Inter",system-ui,sans-serif}
+.spine a{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;color:var(--spine);font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-variation-settings:"opsz" 32}
+.spine .home span{font-size:12px;letter-spacing:.30em}
+.spine img{display:block}
+.hero{display:grid;gap:28px;align-items:center;padding:28px 0 8px}
+@media (min-width:760px){.hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;padding-top:44px}}
+.cover{margin:0}
+.cover img{display:block;width:100%;height:auto;box-shadow:var(--cover-shadow)}
+.kicker{font-family:var(--label-font);font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-2);margin:0 0 10px}
+h1{font-family:var(--title-font);margin:0;line-height:.95;color:var(--title)}
+.lede{font-size:19px;margin:18px 0 0}
+section{padding:46px 0 0}
+h2{font-family:var(--label-font);font-weight:var(--h2-weight,600);text-transform:uppercase;letter-spacing:.2em;font-size:14px;margin:0 0 18px;display:flex;align-items:center;gap:14px;color:var(--ink)}
+h2::after{content:"";flex:1;height:2px;background:var(--rule)}
+h3{font-family:var(--title-font);font-weight:400;margin:0 0 6px;font-size:28px;line-height:1.1;color:var(--title)}
+.story p{margin:0 0 16px;max-width:64ch}
+.album{display:grid;gap:22px;margin:0 0 34px}
+@media (min-width:760px){.album{grid-template-columns:220px minmax(0,1fr);gap:32px;align-items:start}}
+.album .cover img{box-shadow:var(--cover-shadow)}
+.meta{color:var(--ink-2);font-size:14px;margin:0 0 14px;font-family:var(--label-font);letter-spacing:.12em;text-transform:uppercase}
+.player{border:0;width:100%;max-width:640px;display:block;background:var(--player-bg);margin:0 0 6px}
+.tracks{list-style:none;margin:0;padding:0;max-width:640px;counter-reset:t}
+.tracks li{counter-increment:t;display:flex;align-items:baseline;gap:14px;padding:9px 0;border-bottom:1px solid var(--line)}
+.tracks li::before{content:counter(t,decimal-leading-zero);font-family:var(--label-font);color:var(--accent);font-size:14px;min-width:2ch}
+.tracks .t{flex:1}
+.tracks .d{color:var(--ink-2);font-size:14px;font-variant-numeric:tabular-nums}
+.more-tracks summary{cursor:pointer;min-height:44px;display:inline-flex;align-items:center;font-family:var(--label-font);letter-spacing:.18em;text-transform:uppercase;font-size:13px;color:var(--accent);border-bottom:1px solid currentColor}
+.more-tracks[open] summary{margin-bottom:10px}
+.note{color:var(--ink-2);font-size:15px;margin:14px 0 0;max-width:64ch}
+.lineup{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:10px;max-width:780px;margin:0;padding:0;list-style:none}
+.lineup li{background:var(--card);border:1px solid var(--line);padding:14px 16px}
+.lineup b{display:block;font-family:var(--label-font);font-weight:600;font-size:17px;letter-spacing:.04em;color:var(--ink)}
+.lineup span{color:var(--ink-2);font-size:14px}
+.btns{display:flex;flex-direction:column;gap:10px;max-width:420px}
+.btn{display:flex;align-items:center;gap:12px;min-height:52px;padding:0 18px;text-decoration:none;font-family:var(--label-font);font-weight:600;font-size:14px;letter-spacing:.16em;text-transform:uppercase;border:2px solid var(--ink);color:var(--ink);background:transparent;transition:background .2s,color .2s,border-color .2s}
+.btn .ico{width:20px;height:20px;fill:currentColor;flex:none}
+.btn.hot{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn:hover,.btn:focus-visible{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.foot{position:relative;z-index:1;margin-top:64px;padding:22px max(16px,env(safe-area-inset-left,0px)) calc(env(safe-area-inset-bottom,0px) + 26px);border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center;font-family:"Inter",system-ui,sans-serif;font-size:12px;color:var(--ink-2)}
+.foot a{text-decoration:none;letter-spacing:.24em;text-transform:uppercase;font-size:11px;min-height:44px;display:inline-flex;align-items:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+h1{font-size:clamp(72px,17vw,150px);font-weight:700;line-height:.8;letter-spacing:-.01em}h1 .the{color:#A8201A;display:block;font-size:.55em;transform:rotate(-4deg);transform-origin:left}h3{font-size:44px;font-weight:700}h3 .the{color:#A8201A}h2::after{height:1px}.btn{border-radius:2px}
+</style>
+</head>
+<body>
+<svg class="icon-sprite" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg"><symbol id="i-bandcamp" viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></symbol></svg>
+<header class="spine">
+  <a class="home" href="/" aria-label="BODHI X home"><img src="/assets/marks/ring-year.svg" alt="" width="20" height="20"><span>BODHI X</span></a>
+  <a href="/#eras-title">All rooms</a>
+</header>
+<main class="wrap">
+<div class="hero">
+  <figure class="cover"><img src="/assets/rooms/the-next-t-shirt/the-next-t-shirt-1200.jpg" srcset="/assets/rooms/the-next-t-shirt/the-next-t-shirt-600.jpg 600w, /assets/rooms/the-next-t-shirt/the-next-t-shirt-1200.jpg 500w" sizes="(min-width:760px) 440px, 92vw" width="500" height="500" alt="the next t-shirt, written by hand in black marker with a red the."></figure>
+  <div><p class="kicker">Vancouver · 2003 to 2005</p><h1><span class="the">the</span>next t&#8209;shirt</h1><p class="lede">A Vancouver trio. Two records, made before YouTube and all of that.</p></div>
+</div>
+<section class="story" aria-labelledby="s1"><h2 id="s1">The story</h2>
+<p>After Heavy Sun, the search for a drummer turned up Clayton Wolsey. With Keith Trusler on bass, the three of them became the next t&#8209;shirt.</p>
+<p>The first record took ten months, made in the drummer's apartment on the Lower East Side of Vancouver. The Fifth Floor came two years later, five songs cut at the Warehouse Studios, and it was the last thing the three of them recorded together.</p>
+</section>
+<section aria-labelledby="s2"><h2 id="s2">Listen</h2>
+<div class="album">
+  <figure class="cover"><img src="/assets/rooms/the-next-t-shirt/the-next-t-shirt-1200.jpg" srcset="/assets/rooms/the-next-t-shirt/the-next-t-shirt-600.jpg 600w, /assets/rooms/the-next-t-shirt/the-next-t-shirt-1200.jpg 500w" sizes="(min-width:760px) 220px, 92vw" width="500" height="500" alt="Cover of the next t-shirt" loading="lazy"></figure>
+  <div>
+    <h3><span class="the">the</span> next t&#8209;shirt</h3>
+    <p class="meta">2003 · 8 songs</p>
+    <iframe class="player" style="height:120px" title="the next t-shirt on Bandcamp" loading="lazy" src="https://bandcamp.com/EmbeddedPlayer/album=2606593752/size=large/bgcol=ffffff/linkcol=a8201a/tracklist=false/artwork=none/transparent=true/" seamless></iframe>
+    <ol class="tracks" aria-label="the next t-shirt track list"><li><span class="t">Blame The Day</span><span class="d">5:46</span></li><li><span class="t">Who Am I To Say?</span><span class="d">1:31</span></li><li><span class="t">Leisure Party</span><span class="d">4:16</span></li><li><span class="t">Don&#x27;t Break My Heart</span><span class="d">3:57</span></li><li><span class="t">Graveyard Memories</span><span class="d">4:05</span></li><li><span class="t">The Next T-Shirt</span><span class="d">5:56</span></li><li><span class="t">Monsters</span><span class="d">7:09</span></li><li><span class="t">The New Frontiersmen</span><span class="d">8:38</span></li></ol>
+    <p class="note">The cover here is not the original album art.</p>
+    <div class="btns" style="margin-top:16px"><a class="btn hot" href="https://scottytuesday.bandcamp.com/album/the-next-t-shirt" target="_blank" rel="me noopener"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-bandcamp"/></svg><span>the next t-shirt on Bandcamp</span></a></div>
+  </div>
+</div>
+<div class="album">
+  <figure class="cover"><img src="/assets/rooms/the-next-t-shirt/the-fifth-floor-1200.jpg" srcset="/assets/rooms/the-next-t-shirt/the-fifth-floor-600.jpg 600w, /assets/rooms/the-next-t-shirt/the-fifth-floor-1200.jpg 500w" sizes="(min-width:760px) 220px, 92vw" width="500" height="500" alt="Cover of The Fifth Floor" loading="lazy"></figure>
+  <div>
+    <h3>The Fifth Floor</h3>
+    <p class="meta">2005 · EP · 5 songs</p>
+    <iframe class="player" style="height:120px" title="The Fifth Floor on Bandcamp" loading="lazy" src="https://bandcamp.com/EmbeddedPlayer/album=2177376273/size=large/bgcol=ffffff/linkcol=a8201a/tracklist=false/artwork=none/transparent=true/" seamless></iframe>
+    <ol class="tracks" aria-label="The Fifth Floor track list"><li><span class="t">The Truce</span><span class="d">3:53</span></li><li><span class="t">Put You Away</span><span class="d">5:09</span></li><li><span class="t">War Bride</span><span class="d">5:09</span></li><li><span class="t">Dead End Love</span><span class="d">4:43</span></li><li><span class="t">Valley of the Dolls</span><span class="d">3:18</span></li></ol>
+    
+    <div class="btns" style="margin-top:16px"><a class="btn hot" href="https://scottytuesday.bandcamp.com/album/the-fifth-floor" target="_blank" rel="me noopener"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-bandcamp"/></svg><span>The Fifth Floor on Bandcamp</span></a></div>
+  </div>
+</div>
+</section>
+<section aria-labelledby="s3"><h2 id="s3">The band</h2>
+<ul class="lineup"><li><b>Scott Valentine</b><span>Vocals, lyrics, guitars</span></li><li><b>Keith Trusler</b><span>Bass</span></li><li><b>Clayton Wolsey</b><span>Drums, production</span></li></ul>
+</section>
+<section aria-labelledby="s4"><h2 id="s4">More</h2><div class="btns">
+<a class="btn" href="https://scottytuesday.bandcamp.com" target="_blank" rel="me noopener"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-bandcamp"/></svg><span>Every album on Bandcamp</span></a>
+</div></section>
+</main>
+<footer class="foot">
+  <span>The Next T-Shirt is a room in the BODHI X house.</span>
+  <a href="/">Back to BODHI X</a>
+</footer>
+</body>
+</html>
