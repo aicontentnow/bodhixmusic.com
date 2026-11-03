@@ -47,3 +47,7 @@ main{max-width:1040px;margin:0 auto;display:grid;gap:var(--space-9)}
 .site-foot p{margin:0}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* phone fit: keep long tracked room titles inside the screen */
+main,.hero,.seasons,.eras-wrap,.follow{min-width:0;max-width:100%}
+.eras-wrap .bx-eras{grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr))}
+.bx-era,.bx-era .bx-title{min-width:0;overflow-wrap:anywhere}
