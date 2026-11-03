@@ -51,11 +51,25 @@ main{max-width:1040px;margin:0 auto;display:grid;gap:var(--space-9)}
 main,.hero,.seasons,.eras-wrap,.follow{min-width:0;max-width:100%}
 .eras-wrap .bx-eras{grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr))}
 .bx-era,.bx-era .bx-title{min-width:0;overflow-wrap:anywhere}
-/* rooms that link out to the older music */
-.bx-era.linked{background:var(--paper)}
-.era-links{display:flex;flex-wrap:wrap;gap:0 18px;margin-top:auto}
-.era-links .bx-tb{display:inline-flex;align-items:center;text-decoration:none;color:var(--ink)}
-.era-links .bx-tb:hover,.era-links .bx-tb:focus-visible{border-bottom-color:currentColor}
-.bx-era.all:hover .bx-title,.bx-era.all:focus-visible .bx-title{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
 /* rooms grid: three across on wide screens so nine rooms sit in a square */
 .eras-wrap .bx-eras{max-width:780px}
+/* room links v2: stacked, look like buttons, platform icon first */
+.bx-era.linked{background:var(--paper)}
+.era-links{display:flex;flex-direction:column;align-items:stretch;gap:8px;margin-top:auto;padding-top:6px}
+.room-link{display:flex;align-items:center;gap:12px;min-height:48px;padding:8px 12px;background:var(--paper-deep);border:1px solid var(--ghost);color:var(--ink);text-decoration:none;transition:background .2s,color .2s,border-color .2s}
+.room-link .ico{width:18px;height:18px;flex:none;fill:currentColor}
+.room-link .rl-text{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.room-link .rl-label{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-variation-settings:"opsz" 32;line-height:1.3}
+.room-link .rl-sub{font-size:12px;color:var(--ink-2);letter-spacing:0}
+.room-link .go{width:14px;height:14px;flex:none;color:var(--ink-2)}
+a.room-link:hover,a.room-link:focus-visible,.bx-era.open:hover .room-link.enter,.bx-era.open:focus-visible .room-link.enter{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+a.room-link:hover .rl-sub,a.room-link:focus-visible .rl-sub,a.room-link:hover .go,a.room-link:focus-visible .go,.bx-era.open:hover .room-link .go{color:var(--paper)}
+.room-link.enter{padding-left:14px}
+a.room-link:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.bx-era.open:hover .bx-title{text-decoration:none}
+/* follow links with icons */
+.follow .follow-links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;list-style:none;padding:0;margin:var(--space-5,24px) 0 var(--space-4,16px)}
+.follow-link{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border:1px solid var(--ghost);background:var(--paper);color:var(--ink);text-decoration:none;font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-variation-settings:"opsz" 32;transition:background .2s,color .2s,border-color .2s}
+.follow-link .ico{width:18px;height:18px;fill:currentColor;flex:none}
+.follow-link:hover,.follow-link:focus-visible{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+@media (max-width:420px){.follow .follow-links{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}.follow-link{justify-content:center;padding:0 10px}}
