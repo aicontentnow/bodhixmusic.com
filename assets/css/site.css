@@ -1,0 +1,49 @@
+/* bodhixmusic.com page layout. Colours, type and components come from tokens.css and bodhix.css. Sparse like the cover: one subject, centred, paper around it. */
+html{background:var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-inter);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+img{max-width:100%;height:auto;display:block}
+.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.site-head{display:flex;justify-content:space-between;align-items:center;max-width:1040px;margin:0 auto;
+  padding-top:calc(env(safe-area-inset-top,0px) + 12px);padding-bottom:12px}
+.site-head nav a{text-decoration:none;display:inline-flex;align-items:center}
+.home{display:inline-flex;align-items:center;gap:12px;text-decoration:none;min-height:44px}
+.home .bx-caps{font-size:13px;letter-spacing:.30em}
+
+main{max-width:1040px;margin:0 auto;display:grid;gap:var(--space-9)}
+
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-5);padding-top:var(--space-5)}
+.hero .cover{display:block;width:min(520px,100%)}
+.hero .cover img{width:100%;aspect-ratio:1}
+.bio{margin:0;max-width:34ch;font-size:16px;line-height:1.6;text-wrap:balance}
+.enter{text-decoration:none}
+.enter span{white-space:nowrap}
+
+.section-title{margin:0;font-size:22px;line-height:1.2;letter-spacing:.30em;text-align:center}
+.lead{margin:var(--space-2) 0 0;text-align:center}
+.seasons,.eras-wrap,.follow{display:flex;flex-direction:column;align-items:center}
+
+.season-grid{list-style:none;margin:var(--space-6) 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-5) var(--space-4);width:100%;max-width:640px}
+@media (min-width:860px){.season-grid{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1040px}}
+.season-grid li{display:flex;flex-direction:column;gap:var(--space-2);min-width:0}
+.season-grid img{width:100%;aspect-ratio:1;background:var(--paper-deep)}
+.season-grid .bx-label{margin-right:0}
+
+.eras-wrap .bx-eras{margin-top:var(--space-6);background:none;border:0;gap:0;padding:1px 0 0 1px;max-width:840px}
+.eras-wrap .bx-era{border:1px solid var(--ghost);margin:-1px 0 0 -1px}
+.bx-era{text-decoration:none}
+.bx-era.open:hover .bx-title,.bx-era.open:focus-visible .bx-title{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+.bx-era .bx-title{font-size:15px;line-height:1.35}
+.bx-era .mark{display:block}
+
+.follow .links{list-style:none;margin:var(--space-5) 0 var(--space-2);padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-2) var(--space-6)}
+.follow .bx-tb{display:inline-flex;align-items:center;text-decoration:none}
+.follow .bx-note{margin:0}
+
+.site-foot{max-width:1040px;margin:var(--space-9) auto 0;padding:var(--space-6) 0 calc(env(safe-area-inset-bottom,0px) + var(--space-6));border-top:1px solid var(--ghost);
+  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:var(--space-2) var(--space-5)}
+.site-foot p{margin:0}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

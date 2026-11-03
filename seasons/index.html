@@ -1,0 +1,1133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SEASØNS | BODHI X</title>
+<meta name="description" content="SEASØNS by BODHI X. One year, four seasons, 56 songs, released a song at a time. Wind the year around the ring.">
+<link rel="canonical" href="https://bodhixmusic.com/seasons/">
+<link rel="icon" type="image/svg+xml" href="/assets/marks/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#F6F3EA">
+<meta property="og:type" content="music.album">
+<meta property="og:site_name" content="BODHI X">
+<meta property="og:title" content="SEASØNS | BODHI X">
+<meta property="og:description" content="One year, four seasons, 56 songs, released a song at a time.">
+<meta property="og:url" content="https://bodhixmusic.com/seasons/">
+<meta property="og:image" content="https://bodhixmusic.com/assets/img/og-seasons-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The SEASØNS: Spring cover: the spring quarter of a branch ring in colour, with BODHI X in the centre.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/inter-variable-opsz-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/tokens/tokens.css">
+<link rel="stylesheet" href="/assets/css/bodhix.css">
+<style>
+html,body{margin:0}
+/* Layout: the branch circle is the whole interface. Title in the open centre, season label in its own corner, a quiet dock at the foot. Single paper theme by choice: the object is ink and leaves on warm paper. */
+:root{
+  /* BODHI X tokens (tokens/tokens.css). Cover colours for the ring and marks; -text shades for season text under 24 px */
+  --paper:#F6F3EA; --paper-deep:#ECE8DE; --ink:#282623; --ink-2:#6E685F; --ink2:var(--ink-2); --ghost:#D8D2C6;
+  --spring:#528E42; --summer:#DE8018; --autumn:#BA5426; --winter:#5C96BE;
+  --spring-text:#47733A; --summer-text:#935B1D; --autumn-text:#A84E26; --winter-text:#496D85;
+  --radius-pill:999px; --radius-round:50%;
+  --font-inter:Inter,"Helvetica Neue",Arial,sans-serif; --face:var(--font-inter);
+  color-scheme:light;
+}
+html,body{height:100%}
+[hidden]{display:none!important}
+body{background:var(--paper);color:var(--ink);font-family:var(--face);overflow:hidden;-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
+#c{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;outline:none;cursor:grab}
+#c.drag{cursor:grabbing}
+.caps{text-transform:uppercase;font-weight:300;font-variation-settings:"opsz" 32;letter-spacing:.26em}
+button{font:inherit;color:inherit}
+.tb{background:none;border:0;padding:0;min-height:44px;cursor:pointer;color:var(--ink2);font-size:11px;font-weight:400;letter-spacing:.24em;text-transform:uppercase;font-variation-settings:"opsz" 32;transition:color .3s}
+.tb:hover{color:var(--ink)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+
+.top{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none;z-index:3;
+  padding-top:calc(env(safe-area-inset-top,0px) + 6px);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top .tb{pointer-events:auto}
+.views{display:flex;gap:20px}
+
+#centre{position:fixed;left:50%;top:40%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none;z-index:2}
+#ctitle{white-space:nowrap;margin:0;font-size:22px;line-height:1.2;letter-spacing:.30em;margin-right:-.30em;font-weight:300;transition:opacity .45s ease,color .6s ease,transform .45s ease}
+#lyric{margin:0;font-weight:300;line-height:1.5;letter-spacing:.01em;text-wrap:balance;transition:text-shadow .6s}
+#lyric:empty{display:none}
+#lyric.bx-lyric .w{opacity:0;transition:opacity .35s ease}
+#lyric.bx-lyric .w.on{opacity:1}
+#csub{margin:.55em 0 0;font-size:12px;line-height:1.45;color:var(--ink2);text-wrap:balance;min-height:1.45em;transition:opacity .4s}
+.cta{position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 54px);z-index:3;display:flex;justify-content:center;max-width:calc(100% - 32px)}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:6px 20px 6px 12px;border:1px solid var(--ghost);border-radius:999px;background:var(--paper);color:var(--ink);cursor:pointer;transition:border-color .3s}
+.cta-btn:hover{border-color:var(--ink2)}
+.cta-btn svg{width:26px;height:26px;overflow:visible}
+.cta-btn .lbl{font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:400;font-variation-settings:"opsz" 32;white-space:nowrap}
+@media (prefers-reduced-motion:no-preference){.cta-btn svg{animation:breathe 4.8s ease-in-out infinite}}
+@keyframes breathe{0%,100%{transform:rotate(-6deg) translateY(0)}50%{transform:rotate(5deg) translateY(-2px)}}
+.cta-soon{margin:0;display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center;min-height:44px;justify-content:center}
+#soonName{font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:400;font-variation-settings:"opsz" 32}
+#soonDate{font-size:12px;color:var(--ink2)}
+.fade{opacity:0!important;pointer-events:none!important}
+
+#artist{position:fixed;left:50%;transform:translateX(-50%);margin:0;font-size:13px;letter-spacing:.30em;margin-right:-.30em;pointer-events:none;z-index:2;transition:opacity .8s;white-space:nowrap}
+.corner{position:fixed;margin:0;pointer-events:none;opacity:0;transition:opacity 1.1s ease;line-height:1.55;z-index:2;font-size:12px}
+.corner.on{opacity:1}
+.corner span{display:block}
+.corner.tr,.corner.br{text-align:right}
+
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:3;pointer-events:none;
+  padding-bottom:calc(env(safe-area-inset-bottom,0px) + 12px);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.home-row{gap:16px;flex-wrap:wrap}.home-row .bx-tb{text-decoration:none;display:inline-flex;align-items:center}.dock-note{margin:0}
+.dock-in{max-width:520px;margin:0 auto;display:grid;gap:6px;pointer-events:auto}
+.row{display:flex;align-items:center;gap:14px;min-width:0}
+#play{flex:none;width:46px;height:46px;border-radius:50%;border:1px solid var(--ghost);background:transparent;cursor:pointer;display:grid;place-items:center;color:var(--ink);transition:border-color .3s}
+#play:hover{border-color:var(--ink2)}
+#play svg{width:18px;height:18px}
+.trk{flex:1;min-width:0}
+#trackName{margin:0;font-size:11px;letter-spacing:.26em;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#trackMeta{margin:2px 0 0;font-size:12px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#stop{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--ghost);background:transparent;cursor:pointer;display:grid;place-items:center;color:var(--ink2)}
+#stop svg{width:12px;height:12px}
+#stop:hover{color:var(--ink);border-color:var(--ink2)}
+#time{flex:none;font-size:12px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.modes{display:flex;gap:20px}
+.mode{min-height:36px;border-bottom:1px solid transparent}
+.mode[aria-pressed="true"]{color:var(--ink);border-bottom-color:currentColor}
+#msg{margin:0;font-size:12.5px;line-height:1.45;color:var(--ink2);min-height:2.9em;max-width:62ch}
+
+#sheet{position:fixed;z-index:5;left:0;right:0;bottom:0;max-height:82%;overflow:auto;background:var(--paper);border-top:1px solid var(--ghost);box-shadow:0 -24px 48px rgba(40,38,35,.07);
+  padding-block:22px calc(env(safe-area-inset-bottom,0px) + 28px);padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+@media (min-width:860px){#sheet{left:auto;top:0;width:400px;max-height:none;border-top:0;border-left:1px solid var(--ghost);box-shadow:-24px 0 48px rgba(40,38,35,.06);padding-top:calc(env(safe-area-inset-top,0px) + 22px)}}
+.sh-in{max-width:520px;margin:0 auto;display:grid;gap:22px}
+.sh-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+#sheet h2{margin:0;font-size:17px;letter-spacing:.30em;font-weight:300}
+#sheet h3{margin:0 0 6px;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-weight:400;color:var(--ink2)}
+#sheet p{margin:0;font-size:14.5px;line-height:1.6;max-width:62ch}
+.cred{display:grid;grid-template-columns:auto 1fr;gap:4px 18px;font-size:14px;margin:0}
+.cred dt{color:var(--ink2)}
+.cred dd{margin:0}
+.pick{display:flex;gap:18px;flex-wrap:wrap}
+.file{display:inline-flex;align-items:center;min-height:44px;cursor:pointer;font-size:11px;letter-spacing:.24em;font-variation-settings:"opsz" 32;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--ink2);width:max-content}
+.file input{position:absolute;width:1px;height:1px;opacity:0}
+#lyricsSheet{margin-top:14px;display:grid;gap:14px}
+#lyricsSheet h4{margin:0 0 4px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;color:var(--ink2)}
+#lyricsSheet p{font-size:14px;line-height:1.55}
+.season-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:8px;vertical-align:1px}
+</style>
+
+</head>
+<body>
+<canvas id="c" tabindex="0" aria-label="The SEASØNS branch circle. Drag around it, or use the arrow keys, to wind through the year."></canvas>
+
+<div class="top">
+  <div class="views" role="group" aria-label="What the circle lights">
+    <button class="bx-tb tb mode" id="todayBtn" type="button" aria-pressed="false">Today</button>
+    <button class="bx-tb tb mode" id="wholeBtn" type="button" aria-pressed="false">Whole year</button>
+  </div>
+  <button class="bx-tb tb" id="notesBtn" type="button" aria-expanded="false" aria-controls="sheet">Notes</button>
+</div>
+
+<div id="centre">
+  <h1 id="ctitle" class="caps">BODHI X</h1>
+  <p id="lyric" class="bx-lyric"></p>
+  <p id="csub"></p>
+</div>
+
+<div class="cta" id="cta">
+  <button id="seed" class="bx-seed cta-btn" type="button" aria-label="Plant the seed and play Watch You Grow">
+    <svg viewBox="-20 -20 40 40" aria-hidden="true"><path d="M.6 6.5C.4 1.5-.6-3.2 1.4-8.4" fill="none" stroke="#6f9a46" stroke-width="1.7" stroke-linecap="round"/><path d="M1.2-7.8C-2.6-11.8-7.4-11.6-9.6-9.4c3 2.6 7 3.6 10.8 1.6Z" fill="#8db35a"/><path d="M1.6-8.6C4.4-13.4 9.4-14.6 12-12.8c-2.4 3.4-6.6 5.2-10.4 4.2Z" fill="#7aa64c"/><ellipse cx="0" cy="10.5" rx="7.4" ry="5" fill="#8a6a46"/><path d="M-4.6 8.8c1.8-1.6 5-2 7.4-1" fill="none" stroke="#b39672" stroke-width="1.1" stroke-linecap="round"/></svg>
+    <span class="lbl" id="seedLbl">Plant the seed</span>
+  </button>
+  <p id="soon" class="cta-soon" hidden><span id="soonName"></span><span id="soonDate" hidden></span></p>
+</div>
+
+<p id="artist" class="caps fade">BODHI X</p>
+<p class="corner caps tl" data-s="0"><span>SEASØNS</span><span class="bx-spring">SPRING</span></p>
+<p class="corner caps tr" data-s="1"><span>SEASØNS</span><span class="bx-summer">SUMMER</span></p>
+<p class="corner caps br" data-s="2"><span>SEASØNS</span><span class="bx-autumn">AUTUMN</span></p>
+<p class="corner caps bl" data-s="3"><span>SEASØNS</span><span class="bx-winter">WINTER</span></p>
+
+<div class="dock">
+  <div class="dock-in">
+    <div class="row home-row"><a class="bx-tb tb" href="/">BODHI X</a></div>
+    <p id="msg" aria-live="polite"></p>
+  </div>
+</div>
+<div hidden><button id="play" type="button"><svg id="playIcon"></svg></button><span id="trackMeta"></span><span id="time"></span><button id="stop" type="button"></button><input id="fileIn" type="file"><div class="modes"><button class="mode" data-m="song"></button></div><p id="soundNote"></p><div id="lyricsSheet"></div></div>
+
+<aside id="sheet" hidden aria-label="Notes">
+  <div class="sh-in">
+    <div class="sh-head">
+      <div>
+        <h2 class="caps">SEASØNS</h2>
+        <p style="color:var(--ink2);font-size:13.5px;margin-top:6px">BODHI X</p>
+      </div>
+      <button class="bx-tb tb" id="closeSheet" type="button">Close</button>
+    </div>
+    <div>
+      <p>Songs I wrote alone in a bedroom, sung again now. One year, four seasons, released a song at a time. Each season is its own album: Spring, Summer, Autumn and Winter.</p>
+    </div>
+    <div>
+      <h3>Spring</h3>
+      <ul class="bx-songs">
+        <li class="bx-song waiting"><span class="n">SPRING 01</span><span class="t">Watch You Grow</span><span class="s"><span class="bx-dot spring"></span>Soon</span></li>
+        <li class="bx-song waiting"><span class="n">SPRING 02</span><span class="t">Cheerleader</span><span class="s"><span class="bx-dot"></span>Soon</span></li>
+        <li class="bx-song waiting"><span class="n">SPRING 03</span><span class="t">Jukebox</span><span class="s"><span class="bx-dot"></span>Soon</span></li>
+        <li class="bx-song waiting"><span class="n">SPRING 04</span><span class="t">Freak in You</span><span class="s"><span class="bx-dot"></span>Soon</span></li>
+        <li class="bx-song waiting"><span class="n">SPRING 05</span><span class="t">Rewind</span><span class="s"><span class="bx-dot"></span>Soon</span></li>
+        <li class="bx-song waiting"><span class="n">SPRING 06</span><span class="t">Once Upon A Moment</span><span class="s"><span class="bx-dot"></span>Soon</span></li>
+        <li class="bx-song waiting"><span class="n">SPRING 07</span><span class="t">Believe in This</span><span class="s"><span class="bx-dot"></span>Soon</span></li>
+        <li class="bx-song waiting"><span class="n">SPRING 08</span><span class="t">You're a Star</span><span class="s"><span class="bx-dot"></span>Soon</span></li>
+        <li class="bx-song waiting"><span class="n">SPRING 09</span><span class="t">Sweet Freedom</span><span class="s"><span class="bx-dot"></span>Soon</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Credits</h3>
+      <dl class="bx-credits cred">
+        <dt>Primary artist</dt><dd>BODHI X</dd>
+        <dt>Songwriter</dt><dd>Scott Valentine</dd>
+        <dt>Producer</dt><dd>BODHI X</dd>
+      </dl>
+      <p class="bx-note" style="margin-top:10px">Vocals and instrumentation made with AI tools, using the artist's own cloned voice.</p>
+    </div>
+    <div>
+      <h3>The ring</h3>
+      <p style="margin-bottom:8px">The ring is the year. 56 marks sit inside it, one per song, in the order they come out. They light as each one arrives.</p>
+      <div class="pick" role="group" aria-label="Show the marks">
+        <button class="bx-tb tb mode" type="button" data-v="today" aria-pressed="true">Out so far</button>
+        <button class="bx-tb tb mode" type="button" data-v="end" aria-pressed="false">The whole album</button>
+      </div>
+    </div>
+    <div>
+      <h3>How to play</h3>
+      <p id="howto">Drag around the circle to wind the year. Let go and it stays there a while, then settles back to Spring, or to today's season when Today is on. Drag anywhere else to blow wind through the branch.</p>
+    </div>
+    <div>
+      <h3>Follow</h3>
+      <p><a href="https://www.youtube.com/@bodhixmusic" target="_blank" rel="me noopener">YouTube</a>, <a href="https://www.instagram.com/bodhixmusic" target="_blank" rel="me noopener">Instagram</a>, <a href="https://www.tiktok.com/@bodhixmusic" target="_blank" rel="me noopener">TikTok</a>, <a href="https://www.facebook.com/bodhixmusic" target="_blank" rel="me noopener">Facebook</a>. bodhixmusic everywhere.</p>
+    </div>
+  </div>
+</aside>
+
+<script>
+(() => {
+"use strict";
+const PUBLIC = true;   // bodhixmusic.com: no unreleased audio, no lyrics, no dates
+const TAU = Math.PI * 2;
+const clamp = (x, a, b) => x < a ? a : x > b ? b : x;
+const lerp = (a, b, t) => a + (b - a) * t;
+const sstep = t => { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
+const wrap1 = x => ((x % 1) + 1) % 1;
+const cdist = (a, b) => { const d = Math.abs(wrap1(a) - wrap1(b)); return Math.min(d, 1 - d); };
+const cdelta = (from, to) => { let d = wrap1(to) - wrap1(from); if (d > .5) d -= 1; if (d < -.5) d += 1; return d; };
+const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const HOVER = matchMedia("(hover: hover)").matches;
+const MS = REDUCE ? 0.35 : 1;
+
+function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const rnd = rng(20080319);
+const pick = a => a[(rnd() * a.length) | 0];
+
+const PAPER = [246, 243, 234], INK = [40, 38, 35];
+const SEASON_TEXT = [[71, 115, 58], [147, 91, 29], [168, 78, 38], [73, 109, 133]];   // spring-text, summer-text, autumn-text, winter-text
+const SEASONS = [
+  { name: "Spring", col: [82, 142, 66] },
+  { name: "Summer", col: [222, 128, 24] },
+  { name: "Autumn", col: [186, 84, 38] },
+  { name: "Winter", col: [92, 150, 190] }
+];
+const seasonOf = p => Math.floor(wrap1(p) * 4) % 4;
+
+/* ---------- the calendar: circle starts at the left on the first Spring Friday ---------- */
+const DAY = 86400000, YEAR = 365.25;
+function cycleStart(d) { let s = new Date(d.getFullYear(), 2, 19); if (d < s) s = new Date(d.getFullYear() - 1, 2, 19); return s; }
+const pOfDate = d => wrap1((d - cycleStart(d)) / DAY / YEAR);
+const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+function dateOfP(p) { const d = new Date(2027, 2, 19); d.setDate(d.getDate() + Math.round(wrap1(p) * YEAR)); return d; }
+const TODAY = new Date();
+const TODAY_P = pOfDate(TODAY);
+const SONG_SEASON = 0, SONG_P = .125;   // Watch You Grow is Spring 1
+const SEASON_OPENS = ["Friday, March 19, 2027", "Friday, June 18, 2027", "Friday, September 17, 2027", "Friday, December 17, 2027"];
+
+const RAW = {
+  Spring: ["2027-03-19","2027-04-02","2027-04-09","2027-04-16","2027-04-30","2027-05-14","2027-05-21","2027-05-28","2027-06-11"],
+  Summer: ["2027-06-18","2027-06-18","2027-06-25","2027-07-02","2027-07-09","2027-07-16","2027-07-23","2027-07-30","2027-07-30","2027-08-06","2027-08-13","2027-08-20","2027-08-27","2027-09-03","2027-09-10"],
+  Autumn: ["2027-09-17","2027-09-17","2027-09-24","2027-10-01","2027-10-08","2027-10-15","2027-10-22","2027-10-29","2027-11-05","2027-11-12","2027-11-19","2027-11-26","2027-12-03","2027-12-10"],
+  Winter: ["2027-12-17","2027-12-17","2027-12-24","2027-12-31","2028-01-07","2028-01-07","2028-01-14","2028-01-21","2028-01-28","2028-02-04","2028-02-04","2028-02-11","2028-02-18","2028-02-25","2028-02-25","2028-03-03","2028-03-10","2028-03-17"]
+};
+const TITLES = { "Spring 1": "Watch You Grow", "Spring 2": "Cheerleader", "Spring 3": "Jukebox", "Spring 4": "Freak in You", "Spring 5": "Rewind", "Spring 6": "Once Upon A Moment", "Spring 7": "Believe in This", "Spring 8": "You're a Star", "Spring 9": "Sweet Freedom", "Winter 18": "Ain't That the Truth Part 2" };
+const RELEASES = [];
+Object.entries(RAW).forEach(([s, list], si) => list.forEach((iso, i) => {
+  const [y, m, d] = iso.split("-").map(Number); const date = new Date(y, m - 1, d);
+  RELEASES.push({ season: si, label: s.toUpperCase() + " " + String(i + 1).padStart(2, "0"), title: TITLES[s + " " + (i + 1)] || "", date, p: wrap1((date - new Date(2027, 2, 19)) / DAY / YEAR) });
+}));
+const REL_GROUPS = [];
+RELEASES.forEach(r => { const g = REL_GROUPS.find(g => +g.date === +r.date); if (g) g.items.push(r); else REL_GROUPS.push({ date: r.date, p: r.p, items: [r] }); });
+let viewDate = TODAY;
+
+/* ---------- colour ---------- */
+const GS = 0.25;
+function ghostOf(c) { const g = (c[0] + c[1] + c[2]) / 3; return PAPER.map((P, i) => P - GS * (P - (.45 * c[i] + .55 * g))); }
+function mixc(a, b, t) { return [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)]; }
+const css = c => "rgb(" + (c[0] | 0) + "," + (c[1] | 0) + "," + (c[2] | 0) + ")";
+function colourer(c) { const g = ghostOf(c), cache = new Array(25); return w => { const q = Math.round(w * 24); return cache[q] || (cache[q] = css(mixc(g, c, q / 24))); }; }
+const jit = (c, a = 10) => c.map(v => clamp(v + (rnd() - .5) * 2 * a, 0, 255));
+
+/* ---------- the branch, in unit space (ring radius 1) ---------- */
+const P0 = 0.004, P1 = 0.99;
+const ph = Array.from({ length: 5 }, () => rnd() * TAU);
+const radAt = p => 1 + .008 * Math.sin(TAU * 2 * p + ph[0]) + .005 * Math.sin(TAU * 3 * p + ph[1]) + .003 * Math.sin(TAU * 5 * p + ph[2]) + .0015 * Math.sin(TAU * 11 * p + ph[3]);
+const angAt = p => Math.PI + p * TAU;
+const ptAt = p => { const a = angAt(p), r = radAt(p); return [Math.cos(a) * r, Math.sin(a) * r]; };
+const thickAt = p => .016 + .018 * Math.pow(1 - (p - P0) / (P1 - P0), .8);
+
+const BARK = [[124, 98, 72], [116, 94, 70], [122, 92, 66], [128, 126, 128]];
+function barkAt(p) { const x = wrap1(p) * 4 - .5; const i = Math.floor(x); const t = sstep(x - i); return mixc(BARK[(i + 4) % 4], BARK[(i + 5) % 4], t); }
+
+const STEM = [];
+for (let p = P0; p <= P1 + 1e-6; p += 0.0024) { const pt = ptAt(p); STEM.push({ p, x: pt[0], y: pt[1], w: thickAt(p), col: colourer(barkAt(p)) }); }
+
+/* The cover composition, placed by hand: one sparse cluster per season on a thin ring.
+   Angles are screen degrees (0 = right, 90 = down). Positions are measured off the album cover. */
+const D = Math.PI / 180;
+const C = {
+  bud: [[146, 168, 82], [158, 150, 78], [134, 160, 76]],
+  spring: [[134, 178, 70], [152, 188, 84], [120, 166, 64]],
+  summer: [[62, 120, 50], [52, 108, 46], [74, 132, 56], [58, 112, 48], [68, 126, 52]],
+  autumn: [[190, 54, 36], [214, 112, 38], [204, 96, 34]],
+  frost: [[150, 182, 206], [186, 206, 222]]
+};
+const SPEC = [
+  // Spring: two bud twigs and one twig with three young leaves
+  { p: .03, dir: 252, len: .4, bend: -.15, subs: [{ t: .55, da: 28, len: .15, bend: .1 }],
+    leaves: [{ t: 1, ang: 258, size: .055, kind: "bud" }, { sub: 0, t: 1, ang: 286, size: .048, kind: "bud" }, { t: .3, ang: 200, size: .03, kind: "bud" }] },
+  { p: .05, dir: 318, len: .44, bend: .25, inside: true,
+    leaves: [{ t: 1, ang: 300, size: .045, kind: "bud" }, { t: .55, ang: 268, size: .03, kind: "bud" }] },
+  { p: .155, dir: 265, len: .1, bend: -.2, subs: [{ t: .5, da: 60, len: .22, bend: .2 }, { t: .75, da: -40, len: .07, bend: 0 }],
+    leaves: [{ t: 1, ang: 255, size: .27, pet: .5, c: 0 }, { sub: 0, t: 1, ang: 20, size: .22, pet: .45, c: 1, fold: .95 }, { sub: 1, t: 1, ang: 215, size: .13, pet: .3, c: 2, fold: .65 }] },
+  // Summer: one full cluster of big leaves
+  { p: .29, dir: 345, len: .3, bend: .3 },
+  { p: .375, dir: 320, len: .1, bend: 0,
+    leaves: [{ t: 1, ang: 250, size: .34, pet: .7, c: 0 }, { t: 1, ang: 330, size: .32, pet: .6, c: 1 }, { t: 1, ang: 0, size: .34, pet: .7, c: 2 }, { t: 1, ang: 80, size: .3, pet: .5, c: 3 }, { t: 1, ang: 160, size: .34, pet: .6, c: 4 }] },
+  // Autumn: three large maple leaves
+  { p: .555, dir: 75, len: .18, bend: .3 },
+  { p: .62, dir: 120, len: .08, bend: 0,
+    leaves: [{ t: 1, ang: 225, size: .38, pet: .5, c: 0 }, { t: 1, ang: 0, size: .34, pet: .6, c: 1 }, { t: 1, ang: 80, size: .34, pet: .35, c: 2 }] },
+  // Winter: three bare, frosted twigs
+  { p: .895, dir: 200, len: .62, bend: -.12, subs: [{ t: .45, da: -45, len: .3, bend: -.2 }, { t: .7, da: 28, len: .22, bend: .1 }, { t: .86, da: -30, len: .14, bend: 0 }], frost: 10 },
+  { p: .815, dir: 254, len: .44, bend: .2, inside: true, subs: [{ t: .55, da: -30, len: .2, bend: 0 }, { t: .8, da: 25, len: .14, bend: 0 }], frost: 6 },
+  { p: .79, dir: 168, len: .5, bend: .15, subs: [{ t: .5, da: 30, len: .16, bend: 0 }, { t: .75, da: -25, len: .12, bend: 0 }], frost: 6 }
+];
+const TWIGS = [], LEAVES = [], FROST = [];
+SPEC.forEach(sp => {
+  const tw = {
+    p: sp.p, base: ptAt(sp.p), dir: sp.dir * D, len: sp.len, bend: sp.bend || 0,
+    w: .011, ph: rnd() * TAU, sw: .6 + .5 * rnd(),
+    col: colourer(mixc(barkAt(sp.p), [150, 132, 112], .12)), cur: null,
+    subs: (sp.subs || []).map(s => ({ t: s.t, da: s.da * D, len: s.len, bend: s.bend || 0, cur: null }))
+  };
+  TWIGS.push(tw);
+  const s = seasonOf(sp.p);
+  (sp.leaves || []).forEach(l => {
+    const kind = l.kind || "maple";
+    const base = kind === "bud" ? pick(C.bud) : s === 0 ? C.spring[l.c || 0] : s === 1 ? C.summer[l.c || 0] : C.autumn[l.c || 0];
+    LEAVES.push({ tw, sub: l.sub == null ? -1 : l.sub, t: l.t, abs: l.ang * D, size: l.size, kind, fold: l.fold || 1, pet: l.pet || .32,
+      ph: rnd() * TAU, pop: 0, p: sp.p + .01, c: base, col: colourer(jit(base, 6)) });
+  });
+  for (let k = 0; k < (sp.frost || 0); k++) FROST.push({ tw, sub: rnd() < .45 && tw.subs.length ? (rnd() * tw.subs.length) | 0 : -1, t: .2 + .8 * rnd(), star: rnd() < .3, size: .01 + .008 * rnd(), col: colourer(pick(C.frost)), ph: rnd() * TAU, p: sp.p });
+});
+// frost on the ring itself and loose flakes beside the winter twigs, as on the cover
+for (let k = 0; k < 14; k++) { const p = .8 + rnd() * .14, pt = ptAt(p); FROST.push({ fixed: [pt[0] + (rnd() - .5) * .02, pt[1] + (rnd() - .5) * .02], star: false, size: .009 + .006 * rnd(), col: colourer(pick(C.frost)), ph: rnd() * TAU, p }); }
+[[-.95, .66], [-1.12, .56], [-.86, .82], [-1.2, .76], [-.7, .6], [-1.02, .92], [-.6, .78], [-1.27, .46], [-.78, .94]].forEach(([x, y], k) =>
+  FROST.push({ fixed: [x, y], star: true, size: .014 + .006 * (k % 3), col: colourer(C.frost[k % 2]), ph: rnd() * TAU, p: .87 }));
+const AUTUMN_LEAVES = LEAVES.filter(l => l.kind === "maple" && seasonOf(l.p) === 2);
+
+/* maple leaf, unit: base near (0,.07), tip at (0,-1) */
+const MAPLE = (() => {
+  const path = new Path2D(), N = 132;
+  for (let i = 0; i <= N; i++) {
+    const th = -Math.PI + i / N * TAU;
+    const g = (c, w, a) => a * Math.exp(-((th - c) ** 2) / (2 * w * w));
+    let env = .38 + g(0, .3, .62) + g(.98, .3, .46) + g(-.98, .3, .46) + g(1.9, .26, .22) + g(-1.9, .26, .22);
+    env *= 1 - .75 * Math.exp(-((Math.abs(th) - Math.PI) ** 2) / (2 * .26 * .26));
+    const r = env * (1 - .07 * Math.pow(Math.abs(Math.sin(th * 12.5)), .7));
+    const x = Math.sin(th) * r, y = -Math.cos(th) * r;
+    i ? path.lineTo(x, y) : path.moveTo(x, y);
+  }
+  path.closePath();
+  return path;
+})();
+
+/* ---------- canvases ---------- */
+const cv = document.getElementById("c"), ctx = cv.getContext("2d");
+const layer = document.createElement("canvas"), lx = layer.getContext("2d");
+const small = document.createElement("canvas"), sx = small.getContext("2d");
+const paper = document.createElement("canvas"), px = paper.getContext("2d");
+const grain = document.createElement("canvas"); grain.width = grain.height = 180;
+(() => { const g = grain.getContext("2d"), im = g.createImageData(180, 180); for (let i = 0; i < im.data.length; i += 4) { const v = 150 + Math.random() * 105; im.data[i] = v; im.data[i + 1] = v * .99; im.data[i + 2] = v * .96; im.data[i + 3] = 255; } g.putImageData(im, 0, 0); })();
+let grainPat = null;
+
+let W = 0, H = 0, DPR = 1, CX = 0, CY = 0, R = 120, centreTop = 0;
+const elCentre = document.getElementById("centre"), elTitle = document.getElementById("ctitle"), elSub = document.getElementById("csub"), elLyric = document.getElementById("lyric");
+const elArtist = document.getElementById("artist"), corners = [...document.querySelectorAll(".corner")];
+const elSeed = document.getElementById("seed"), elSeedLbl = document.getElementById("seedLbl");
+const elSoon = document.getElementById("soon"), elSoonName = document.getElementById("soonName"), elSoonDate = document.getElementById("soonDate");
+
+function layout() {
+  DPR = Math.min(2, window.devicePixelRatio || 1);
+  W = innerWidth; H = innerHeight;
+  for (const c of [cv, layer]) { c.width = Math.round(W * DPR); c.height = Math.round(H * DPR); }
+  small.width = Math.max(1, Math.round(W * DPR / 4)); small.height = Math.max(1, Math.round(H * DPR / 4));
+  paper.width = cv.width; paper.height = cv.height;
+  const topH = 112, dockH = Math.min(176, H * .3);
+  const avail = H - topH - dockH;
+  R = Math.min((W - 28) / 2 / 1.55, avail / 2 / 1.62, 300);
+  CX = W / 2; CY = topH + avail / 2 - R * .04;
+  // paper texture
+  px.fillStyle = css(PAPER); px.fillRect(0, 0, paper.width, paper.height);
+  const pr = rng(7);
+  for (let i = 0; i < 14; i++) {
+    const x = pr() * paper.width, y = pr() * paper.height, rr = (60 + pr() * 260) * DPR;
+    const gr = px.createRadialGradient(x, y, 0, x, y, rr);
+    const dark = pr() < .5; gr.addColorStop(0, dark ? "rgba(180,165,135,.022)" : "rgba(255,253,246,.1)"); gr.addColorStop(1, "rgba(0,0,0,0)");
+    px.fillStyle = gr; px.fillRect(x - rr, y - rr, rr * 2, rr * 2);
+  }
+  px.globalAlpha = .05; px.globalCompositeOperation = "multiply"; px.fillStyle = px.createPattern(grain, "repeat"); px.fillRect(0, 0, paper.width, paper.height);
+  px.globalAlpha = 1; px.globalCompositeOperation = "source-over";
+  grainPat = ctx.createPattern(grain, "repeat");
+  // type
+  const tf = clamp(R * .135, 15, 34);
+  elCentre.style.left = CX + "px"; elCentre.style.top = (CY - tf * .6) + "px";
+  elTitle.style.fontSize = tf + "px"; elSub.style.maxWidth = (R * 1.15) + "px";
+  elLyric.style.maxWidth = (R * 1.42) + "px"; elLyric.style.fontSize = clamp(R * .112, 13, 24) + "px";
+  centreTop = CY - tf * .6;
+  elArtist.style.fontSize = (tf * .62) + "px"; elArtist.style.top = (CY + R * 1.42) + "px";
+  const cf = clamp(R * .085, 10, 16), off = R * 1.5, g = 16;
+  corners.forEach(el => {
+    el.style.fontSize = cf + "px"; el.style.left = el.style.right = el.style.top = el.style.bottom = "auto";
+    const cls = el.classList;
+    if (cls.contains("tl") || cls.contains("bl")) el.style.left = Math.max(g, CX - off) + "px"; else el.style.right = Math.max(g, W - CX - off) + "px";
+    if (cls.contains("tl") || cls.contains("tr")) el.style.top = Math.max(112, CY - off) + "px"; else el.style.top = Math.min(H - 190, CY + off - cf * 3.1) + "px";
+  });
+}
+addEventListener("resize", layout);
+layout();
+
+/* ---------- state ---------- */
+let time = 0, last = performance.now();
+let mode = "idle";       // idle | planting | playing | paused | done
+let view = "song";       // song (the track's own season) | today | whole
+let songRev = 1, holdT = 0, holdUntil = 0;
+let T = SONG_P, Tv = 0, Hw = .125, rev = 1, doneUntil = 0;
+let dragging = false, keyTimer = 0, dragT = 0, lastSeasonDrag = -1, lastTickDrag = -1;
+const wind = { x: 0, y: 0, tx: 0, ty: 0 };
+const par = { x: 0, y: 0, tx: 0, ty: 0 };
+let bassEnv = 0, padEnv = 0, padTarget = 0, widen = 0;
+let seedAnim = null;
+const ripples = [], parts = [];
+
+function litW(p) { const F = .055; return clamp((Hw + F / 2 - cdist(p, T)) / F, 0, 1); }
+function grow(p) { return sstep((rev - p) / .035); }
+
+/* ---------- audio: placeholder sketch + swappable master ---------- */
+let ac = null, master = null, room = null, analyser = null, fbuf = null;
+let songStart = 0, useFile = false, audioEl = null, fileName = "";
+const EIGHTH = .27, BAR = EIGHTH * 6;
+const FORM = [["A", 4, .5, 0], ["A", 8, .72, 0], ["B", 8, .82, .5], ["A", 8, .74, 0], ["B", 8, .84, .55], ["C", 8, .86, 1], ["B", 8, .9, .75], ["O", 4, .55, .2]];
+const BARS = FORM.reduce((a, f) => a + f[1], 0);
+const SKETCH_DUR = BARS * BAR + 2.2;
+const PROG = { A: ["G", "Em", "C", "D"], B: ["C", "G", "D", "Em"], C: ["Em", "C", "G", "D"], O: ["G", "C", "G", "G"] };
+const PICK = { G: [98, 196, 246.94, 392, 246.94, 196], Em: [82.41, 196, 246.94, 329.63, 246.94, 196], C: [130.81, 196, 293.66, 329.63, 293.66, 196], D: [146.83, 220, 293.66, 369.99, 293.66, 220] };
+const ROOT = { G: 49, Em: 41.2, C: 65.41, D: 73.42 };
+const PADN = { G: [196, 246.94, 293.66], Em: [164.81, 196, 246.94], C: [130.81, 164.81, 196], D: [146.83, 185, 220] };
+const ksCache = {};
+let schedI = 0, schedTimer = 0, padVoices = [], tapeSrc = null;
+let SONG = null, hasMap = false, gi = 0, bi = 0, lastRip = 0, vocalE = 0, doubleE = 0, lineIdx = -1;
+const vq = [];
+
+function songDur() { if (hasMap && SONG) return SONG.duration; return useFile && audioEl && isFinite(audioEl.duration) ? audioEl.duration : SKETCH_DUR; }
+function songTime() {
+  if (useFile && audioEl) return audioEl.currentTime;
+  if (!ac || mode === "idle" || mode === "done") return 0;
+  return Math.max(0, ac.currentTime - songStart);
+}
+function sectionAt(bar) { let b = 0; for (let i = 0; i < FORM.length; i++) { if (bar < b + FORM[i][1]) return { i, f: FORM[i], bar: bar - b }; b += FORM[i][1]; } return { i: FORM.length - 1, f: FORM[FORM.length - 1], bar: 0 }; }
+
+function ensureAudio() {
+  if (ac) return true;
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) { say("This browser cannot play sound here, but the branch still grows."); return false; }
+  ac = new AC();
+  const comp = ac.createDynamicsCompressor(); comp.threshold.value = -14; comp.ratio.value = 3;
+  master = ac.createGain(); master.gain.value = .9;
+  master.connect(comp); comp.connect(ac.destination);
+  analyser = ac.createAnalyser(); analyser.fftSize = 1024; fbuf = new Uint8Array(analyser.frequencyBinCount);
+  master.connect(analyser);
+  room = ac.createConvolver();
+  const n = Math.floor(ac.sampleRate * .55), ir = ac.createBuffer(2, n, ac.sampleRate);
+  for (let ch = 0; ch < 2; ch++) { const d = ir.getChannelData(ch); for (let i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / n, 3.2); }
+  room.buffer = ir; const wet = ac.createGain(); wet.gain.value = .16; room.connect(wet); wet.connect(master);
+  return true;
+}
+function ks(f) {
+  const key = f.toFixed(2); if (ksCache[key]) return ksCache[key];
+  const sr = ac.sampleRate, n = Math.floor(sr * 3.2), b = ac.createBuffer(1, n, sr), d = b.getChannelData(0);
+  const N = Math.max(2, Math.round(sr / f)), buf = new Float32Array(N);
+  let lastv = 0; const bright = f > 300 ? .55 : .42;
+  for (let i = 0; i < N; i++) { lastv += bright * ((Math.random() * 2 - 1) - lastv); buf[i] = lastv; }
+  const decay = f < 120 ? .9965 : .9978;
+  let idx = 0, peak = 0;
+  for (let i = 0; i < n; i++) { const nx = (idx + 1) % N, v = buf[idx]; d[i] = v; buf[idx] = decay * .5 * (v + buf[nx]); idx = nx; const a = Math.abs(v); if (a > peak) peak = a; }
+  const fade = Math.floor(sr * .4);
+  for (let i = 0; i < n; i++) { d[i] = d[i] / (peak || 1) * .8; if (i > n - fade) d[i] *= (n - i) / fade; }
+  return (ksCache[key] = b);
+}
+function pluck(f, t, v, pan) {
+  const s = ac.createBufferSource(); s.buffer = ks(f);
+  const g = ac.createGain(); g.gain.value = v * .32;
+  const lp = ac.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 2600 + v * 1400;
+  const pn = ac.createStereoPanner ? ac.createStereoPanner() : null;
+  s.connect(lp); lp.connect(g);
+  if (pn) { pn.pan.value = pan; g.connect(pn); pn.connect(master); pn.connect(room); } else { g.connect(master); g.connect(room); }
+  s.start(t);
+}
+function pulse(f, t, v) {
+  const o = ac.createOscillator(), o2 = ac.createOscillator(), g = ac.createGain(), lp = ac.createBiquadFilter();
+  o.frequency.value = f * 2; o2.frequency.value = f * 4; o.type = "sine"; o2.type = "triangle";
+  lp.type = "lowpass"; lp.frequency.value = 260;
+  const g2 = ac.createGain(); g2.gain.value = .25;
+  o.connect(g); o2.connect(g2); g2.connect(g); g.connect(lp); lp.connect(master);
+  g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(v * .2, t + .015); g.gain.exponentialRampToValueAtTime(.0008, t + .85);
+  o.start(t); o2.start(t); o.stop(t + .9); o2.stop(t + .9);
+}
+function pad(chord, t, dur, lvl) {
+  if (lvl <= 0) return;
+  const lp = ac.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 760 + lvl * 520; lp.Q.value = .4;
+  const g = ac.createGain(); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.026 * lvl, t + dur * .45); g.gain.linearRampToValueAtTime(0, t + dur + 1.2);
+  lp.connect(g); g.connect(master); g.connect(room);
+  PADN[chord].forEach((f, i) => [1, 2].forEach((oct, j) => {
+    const o = ac.createOscillator(); o.type = j ? "triangle" : "sawtooth"; o.frequency.value = f * oct; o.detune.value = (i - 1) * 6 + (j ? 4 : -3);
+    const og = ac.createGain(); og.gain.value = j ? .5 : .35; o.connect(og); og.connect(lp); o.start(t); o.stop(t + dur + 1.4);
+    padVoices.push(o);
+  }));
+}
+function startTape(t) {
+  const n = ac.sampleRate * 2, b = ac.createBuffer(1, n, ac.sampleRate), d = b.getChannelData(0);
+  for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+  tapeSrc = ac.createBufferSource(); tapeSrc.buffer = b; tapeSrc.loop = true;
+  const f = ac.createBiquadFilter(); f.type = "bandpass"; f.frequency.value = 3200; f.Q.value = .5;
+  const g = ac.createGain(); g.gain.value = .012; tapeSrc.connect(f); f.connect(g); g.connect(master); tapeSrc.start(t);
+}
+function schedule() {
+  if (!ac || mode !== "playing" || useFile) return;
+  const ahead = ac.currentTime + .25;
+  while (schedI < BARS * 6) {
+    const bar = Math.floor(schedI / 6), e = schedI % 6;
+    const t0 = songStart + schedI * EIGHTH;
+    if (t0 > ahead) break;
+    const sec = sectionAt(bar), [key, , vel, padL] = sec.f;
+    const chord = PROG[key][sec.bar % 4];
+    const last = bar === BARS - 1;
+    if (e === 0) {
+      const lvlFade = key === "O" ? (1 - sec.bar / 4) * padL : padL;
+      if (lvlFade > 0) pad(chord, t0, BAR, lvlFade);
+    }
+    if (last) {
+      if (e === 0) { [98, 146.83, 196, 246.94, 392, 587.33].forEach((f, k) => { pluck(f, t0 + k * .03, .62 - k * .05, (k - 2.5) * .12); }); vq.push({ t: t0, k: "pluck", v: 1, s: 0 }); vq.push({ t: t0 + .2, k: "bass", v: .9 }); }
+    } else {
+      let t = t0 + (e % 2 ? .014 : 0) + (Math.random() - .5) * .012;
+      let v = vel * (e === 0 ? 1.08 : e === 3 ? .98 : .8) * (.86 + Math.random() * .26);
+      if (key === "O") v *= 1 - sec.bar / 5;
+      if (bar < 1) v *= .7;
+      const f = PICK[chord][e];
+      pluck(f, t, v, e === 0 ? -.15 : (e % 3 - 1) * .32);
+      vq.push({ t, k: "pluck", v, s: e });
+      if (key === "C" && e === 0 && sec.bar % 2 === 0) { pluck(PICK[chord][3] * 2, t + EIGHTH * 1.5, .5, .4); vq.push({ t: t + EIGHTH * 1.5, k: "pluck", v: .9, s: 6 }); }
+      if (bar >= 2 && key !== "O" && (e === 0 || (e === 3 && key !== "A"))) { pulse(ROOT[chord], t0, e === 0 ? .9 : .5); vq.push({ t: t0, k: "bass", v: e === 0 ? 1 : .55 }); }
+    }
+    schedI++;
+  }
+}
+
+function startSong() {
+  if (!ensureAudio()) { mode = "playing"; songStart = performance.now() / 1000 + 1.4; return; }
+  if (ac.state === "suspended") ac.resume();
+  const lead = 1.45;
+  if (useFile && audioEl) {
+    audioEl.currentTime = 0; gi = 0; bi = 0; lineIdx = -1;
+    const unlock = audioEl.play(); if (unlock && unlock.then) unlock.then(() => { if (seedAnim) audioEl.pause(); }).catch(() => {});
+    setTimeout(() => { if (mode === "planting" || mode === "playing") { try { audioEl.currentTime = 0; } catch (e) {} audioEl.play().catch(() => say("Tap play to start the song.")); } }, lead * 1000);
+  } else {
+    songStart = ac.currentTime + lead; schedI = 0; vq.length = 0; startTape(songStart - .6);
+    clearInterval(schedTimer); schedTimer = setInterval(schedule, 40);
+  }
+}
+function stopSketch() {
+  clearInterval(schedTimer); vq.length = 0;
+  if (tapeSrc) { try { tapeSrc.stop(); } catch (e) {} tapeSrc = null; }
+  padVoices.forEach(o => { try { o.stop(); } catch (e) {} }); padVoices = [];
+}
+
+/* ---------- controls ---------- */
+const stopBtn = document.getElementById("stop"), playBtn = document.getElementById("play"), playIcon = document.getElementById("playIcon"), elTime = document.getElementById("time"), elMsg = document.getElementById("msg");
+const ICON = {
+  seed: '<path d="M6.4 15.2c-1.8-.6-2.6-2.4-2-4.1.6-1.7 2.4-2.4 4-1.9 1.5.5 2.3 2.3 1.7 3.9-.5 1.6-2.1 2.6-3.7 2.1Z" fill="currentColor"/><path d="M9.6 10.2C11 6.8 13.5 3.6 17.6 1.6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>',
+  pause: '<rect x="5" y="4" width="2.2" height="12" fill="currentColor"/><rect x="12.8" y="4" width="2.2" height="12" fill="currentColor"/>',
+  play: '<path d="M6 3.8v12.4L16 10Z" fill="currentColor"/>'
+};
+function setIcon() {
+  const k = mode === "playing" || mode === "planting" ? "pause" : mode === "paused" ? "play" : "start";
+  playIcon.innerHTML = ICON[k === "start" ? "play" : k];
+  playBtn.setAttribute("aria-label", k === "pause" ? "Pause" : k === "play" ? "Play" : "Plant the seed and play");
+  stopBtn.hidden = !(mode === "planting" || mode === "playing" || mode === "paused");
+}
+setIcon();
+let msgTimer = 0;
+function say(t, ms = 6500) { elMsg.textContent = t; clearTimeout(msgTimer); if (ms) msgTimer = setTimeout(() => { elMsg.textContent = ""; }, ms); }
+const fmt = s => { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
+
+function plant() {
+  if (PUBLIC) return;
+  if (mode === "planting" || mode === "playing") return;
+  view = "song"; syncViews();
+  mode = "planting"; doneUntil = 0;
+  const sr = elSeed.getBoundingClientRect();
+  seedAnim = { t0: time, from: [(sr.left + 25 - CX) / R, (sr.top + sr.height * .6 - CY) / R], to: ptAt(P0 + .002) };
+  startSong(); setIcon();
+}
+function togglePlay() {
+  if (mode === "idle" || mode === "done") return plant();
+  if (mode === "playing" || mode === "planting") {
+    mode = "paused";
+    if (useFile && audioEl) audioEl.pause(); else if (ac) ac.suspend();
+  } else if (mode === "paused") {
+    mode = "playing";
+    if (useFile && audioEl) audioEl.play(); else if (ac) ac.resume();
+  }
+  setIcon();
+}
+function stopSong(quiet) {
+  if (!(mode === "planting" || mode === "playing" || mode === "paused")) return;
+  if (useFile && audioEl) { audioEl.pause(); try { audioEl.currentTime = 0; } catch (e) {} }
+  stopSketch();
+  if (ac && ac.state === "suspended") ac.resume();
+  mode = "idle"; doneUntil = 0; seedAnim = null; elSeedLbl.textContent = "Plant the seed"; gi = 0; bi = 0; setLyric(-1);
+  setIcon();
+  if (!quiet) say("Stopped. Plant the seed to hear it again.");
+}
+stopBtn.addEventListener("click", () => stopSong());
+addEventListener("keydown", e => { if (e.key === "Escape" && sheet.hidden) stopSong(); });
+elSeed.addEventListener("click", plant);
+playBtn.addEventListener("click", togglePlay);
+addEventListener("keydown", e => { if (e.code === "Space" && e.target === document.body || (e.code === "Space" && e.target === cv)) { e.preventDefault(); togglePlay(); } });
+
+const wholeBtn = document.getElementById("wholeBtn"), todayBtn = document.getElementById("todayBtn");
+function syncViews() { wholeBtn.setAttribute("aria-pressed", view === "whole"); todayBtn.setAttribute("aria-pressed", view === "today"); }
+function setView(v) {
+  holdUntil = 0;
+  view = view === v ? "song" : v; doneUntil = 0; syncViews();
+  const ssn = SEASONS[seasonOf(TODAY_P)].name;
+  const si = seasonOf(TODAY_P);
+  if (view === "today") say("Today is " + MONTHS[TODAY.getMonth()] + " " + TODAY.getDate() + ", so " + ssn + " is lit." + (si === SONG_SEASON ? "" : " SEASØNS: " + ssn + " is album " + (si + 1) + " of 4, coming soon.") + " Tap Today again to go back to Spring.", 11000);
+  else if (view === "whole") say("The whole year, as on the album cover.");
+  else say("Watch You Grow is a Spring song, so Spring is lit.");
+}
+wholeBtn.addEventListener("click", () => setView("whole"));
+todayBtn.addEventListener("click", () => setView("today"));
+
+document.querySelectorAll(".modes .mode").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".modes .mode").forEach(x => x.setAttribute("aria-pressed", x === b));
+  const m = b.dataset.m;
+  if (m === "song") say("One song draws the whole year around the circle.");
+  else if (m === "season") say("Spring plays its nine songs in order, each one drawing its stretch of the branch. For now, Watch You Grow plays as the preview.", 9000);
+  else say("All 56 straight through, the branch flowing from track to track. It fills in one song at a time. For now, Watch You Grow plays as the preview.", 9000);
+}));
+
+const sheet = document.getElementById("sheet"), notesBtn = document.getElementById("notesBtn");
+function openSheet(o) { sheet.hidden = !o; notesBtn.setAttribute("aria-expanded", o); if (o) document.getElementById("closeSheet").focus(); else notesBtn.focus(); }
+notesBtn.addEventListener("click", () => openSheet(sheet.hidden));
+document.getElementById("closeSheet").addEventListener("click", () => openSheet(false));
+addEventListener("keydown", e => { if (e.key === "Escape" && !sheet.hidden) openSheet(false); });
+sheet.querySelectorAll("[data-v]").forEach(b => b.addEventListener("click", () => {
+  sheet.querySelectorAll("[data-v]").forEach(x => x.setAttribute("aria-pressed", x === b));
+  viewDate = b.dataset.v === "end" ? new Date(2028, 2, 18) : TODAY;
+}));
+document.getElementById("howto").textContent = HOVER ? "Drag around the circle to wind the year. Let go and it stays there a while, then settles back to Spring. Move the mouse to blow wind through the branch. The arrow keys step a week at a time." : "Drag around the circle to wind the year. Let go and it stays there a while, then settles back to Spring. Drag anywhere else to blow wind through the branch.";
+
+document.getElementById("fileIn").addEventListener("change", e => {
+  const f = e.target.files && e.target.files[0]; if (!f) return;
+  if (!ensureAudio()) return;
+  if (mode !== "idle" && mode !== "done") { stopSketch(); if (audioEl) audioEl.pause(); mode = "idle"; rev = 1; setIcon(); }
+  audioEl = new Audio(); audioEl.preload = "auto"; hasMap = false;
+  const msrc = ac.createMediaElementSource(audioEl); msrc.connect(master);
+  audioEl.addEventListener("ended", finish);
+  audioEl.src = URL.createObjectURL(f); useFile = true; fileName = f.name;
+  document.getElementById("trackMeta").textContent = "SPRING 01. " + f.name;
+  document.getElementById("soundNote").textContent = "Playing " + f.name + ". The branch now listens to it: lows breathe the ring, plucks and onsets unfold leaves.";
+  audioEl.addEventListener("loadedmetadata", () => { elTime.textContent = fmt(audioEl.duration); }, { once: true });
+  say("Master loaded. Plant the seed to hear it grow the branch.");
+});
+
+function finish() {
+  if (mode === "idle" || mode === "done") return;
+  mode = "done"; doneUntil = time + 10; stopSketch(); setIcon(); rev = 1;
+  elSeedLbl.textContent = "Plant it again";
+}
+
+/* ---------- pointer: wind and winding the clock ---------- */
+let lastPt = null, lastPtTime = 0;
+function local(e) { return [e.clientX, e.clientY]; }
+function pOfPointer(x, y) { return wrap1((Math.atan2(y - CY, x - CX) - Math.PI) / TAU); }
+cv.addEventListener("pointerdown", e => {
+  const [x, y] = local(e); lastPt = [x, y]; lastPtTime = performance.now();
+  const d = Math.hypot(x - CX, y - CY) / R;
+  if (d > .55 && d < 1.55) { dragging = true; dragT = T + cdelta(T, pOfPointer(x, y)); cv.classList.add("drag"); lastSeasonDrag = seasonOf(dragT); }
+  cv.setPointerCapture(e.pointerId);
+});
+cv.addEventListener("pointermove", e => {
+  const [x, y] = local(e), now = performance.now();
+  if (e.pointerType === "mouse" || e.buttons) {
+    if (lastPt) {
+      const dt = Math.max(8, now - lastPtTime) / 16.7;
+      const vx = (x - lastPt[0]) / dt, vy = (y - lastPt[1]) / dt;
+      if (!dragging || e.pointerType === "mouse") { wind.tx = clamp(wind.tx + vx * .22, -14, 14); wind.ty = clamp(wind.ty + vy * .22, -14, 14); }
+      else { wind.tx = clamp(wind.tx + vx * .08, -6, 6); wind.ty = clamp(wind.ty + vy * .08, -6, 6); }
+    }
+    lastPt = [x, y]; lastPtTime = now;
+  }
+  if (e.pointerType === "mouse") { par.tx = (x / W - .5) * -10; par.ty = (y / H - .5) * -8; }
+  if (dragging) {
+    dragT = dragT + cdelta(dragT, pOfPointer(x, y));
+    const s = seasonOf(dragT);
+    if (s !== lastSeasonDrag) { lastSeasonDrag = s; buzz(10); }
+    const near = nearestRelease(dragT); const id = near ? +near.date : -1;
+    if (near && id !== lastTickDrag && cdist(near.p, dragT) < .004) { lastTickDrag = id; buzz(4); }
+  }
+});
+function endDrag() { if (dragging) { dragging = false; cv.classList.remove("drag"); Tv = 0; holdT = dragT; holdUntil = time + (mode === "idle" || mode === "done" ? 8 : 15); } lastPt = null; }
+cv.addEventListener("pointerup", endDrag); cv.addEventListener("pointercancel", endDrag);
+cv.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") { par.tx = par.ty = 0; } });
+cv.addEventListener("keydown", e => {
+  if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+  e.preventDefault();
+  if (!dragging) { dragT = T; }
+  dragging = true; dragT += (e.key === "ArrowRight" ? 7 : -7) / YEAR;
+  clearTimeout(keyTimer); keyTimer = setTimeout(() => { dragging = false; holdT = dragT; holdUntil = time + 8; }, 1600);
+});
+function buzz(ms) { try { navigator.vibrate && navigator.vibrate(ms); } catch (e) {} }
+function nearestRelease(p) { let best = null, bd = 1; REL_GROUPS.forEach(g => { const d = cdist(g.p, p); if (d < bd) { bd = d; best = g; } }); return bd < 3.6 / YEAR ? best : null; }
+
+/* ---------- visual events from sound ---------- */
+function tipXY() { const pt = ptAt(clamp(songRev, P0, P1)); return pt; }
+function onPluck(v, s) {
+  for (const l of LEAVES) { const d = songRev - l.p; if (d > -.01 && d < .05) l.pop = Math.max(l.pop, v * (1 - Math.abs(d - .02) * 14)); }
+  if ((v > .7 || s === 0) && time - lastRip > .45) { lastRip = time; const [x, y] = tipXY(); ripples.push({ x, y, t0: time, c: SEASONS[seasonOf(songRev)].col, big: s === 0 }); }
+  if (s === 6) { const [x, y] = tipXY(); spawnMote(x, y, seasonOf(rev)); }
+}
+function onBass(v) { bassEnv = Math.max(bassEnv, v); }
+
+let prevMid = 0, fluxAvg = 6, lastOnset = 0;
+function readAnalyser() {
+  if (!useFile || hasMap || !analyser || mode !== "playing") return;
+  analyser.getByteFrequencyData(fbuf);
+  let low = 0, mid = 0; for (let i = 1; i < 5; i++) low += fbuf[i]; for (let i = 8; i < 70; i++) mid += fbuf[i];
+  low /= 4 * 255; mid /= 62;
+  bassEnv = Math.max(bassEnv, sstep((low - .45) / .45));
+  const flux = Math.max(0, mid - prevMid); prevMid = mid;
+  fluxAvg = lerp(fluxAvg, flux, .05);
+  if (flux > fluxAvg * 2.2 + 2.5 && time - lastOnset > .13) { lastOnset = time; onPluck(clamp(flux / 22, .3, 1), flux > fluxAvg * 4 ? 0 : 1); }
+  padTarget = clamp((mid - 60) / 90, 0, 1);
+}
+
+/* ---------- particles: falling leaves, snow, motes ---------- */
+function spawnMote(x, y, s) {
+  if (parts.length > 70) return;
+  const col = s === 0 ? [150, 190, 104] : s === 1 ? [226, 168, 78] : s === 3 ? [160, 192, 214] : [200, 120, 60];
+  parts.push({ k: "mote", ux: x, uy: y, x: CX + x * R, y: CY + y * R, vx: (Math.random() - .5) * .2, vy: -.12 - Math.random() * .2, sz: .9 + Math.random() * 1.2, c: col, life: 0, max: 5 + Math.random() * 5, ph: Math.random() * TAU });
+}
+function spawnFall(l) {
+  if (!l.cur || parts.filter(p => p.k === "leaf").length > 16) return;
+  parts.push({ k: "leaf", x: CX + l.cur.x * R, y: CY + l.cur.y * R, vx: (Math.random() - .5) * .3, vy: .1, rot: l.cur.a, vr: (Math.random() - .5) * .03, flip: Math.random() * TAU, fr: 1.4 + Math.random() * 1.8, sz: l.size * R * .55, c: css(l.c), life: 0, max: 16, ph: Math.random() * TAU });
+}
+function spawnSnow() {
+  if (parts.length > 90) return;
+  parts.push({ k: "snow", x: CX + (-1.55 + Math.random() * 1.2) * R, y: CY + (.15 + Math.random() * .35) * R, vx: (Math.random() - .5) * .2, vy: .25 + Math.random() * .35, sz: .7 + Math.random() * 1.5, c: [150, 184, 210], life: 0, max: 6 + Math.random() * 4, ph: Math.random() * TAU });
+}
+function particles(dt) {
+  const aW = litW(.625), wW = litW(.875), sW = litW(.125), uW = litW(.375), wm = Math.hypot(wind.x, wind.y);
+  const visible = Hw < .4 ? 1 : .55;
+  let fallRate = (.12 * aW + wm * .05 * aW) * MS * visible;
+  if ((mode === "playing") && songRev > .64 && songRev < .78) fallRate += .5 * MS;
+  if (Math.random() < fallRate * dt) {
+    const cand = AUTUMN_LEAVES.filter(l => l.cur && grow(l.p) > .9 && litW(l.p) > .35 && (mode !== "playing" || l.p < songRev - .03));
+    if (cand.length) spawnFall(pick(cand));
+  }
+  if (Math.random() < 1.6 * wW * dt * MS * visible) spawnSnow();
+  const moteAt = (s, w) => { if (Math.random() < 1.1 * w * dt * MS * visible) { const p = s * .25 + Math.random() * .25; const a = angAt(p), rr = 1 + (Math.random() * .35 - .05); spawnMote(Math.cos(a) * rr, Math.sin(a) * rr, s); } };
+  moteAt(0, sW); moteAt(1, uW);
+  for (let i = parts.length - 1; i >= 0; i--) {
+    const q = parts[i]; q.life += dt;
+    const f = dt * 60;
+    if (q.k === "leaf") {
+      q.vy = Math.min(q.vy + .006 * f, .55 + Math.sin(time * q.fr + q.ph) * .12);
+      q.vx += (Math.sin(time * 1.1 + q.ph) * .012 + wind.x * .004) * f; q.vx *= .985;
+      q.vy += wind.y * .002 * f; q.rot += q.vr * f + Math.sin(time * 2 + q.ph) * .01;
+    } else if (q.k === "snow") {
+      q.vx += (Math.sin(time * .7 + q.ph) * .004 + wind.x * .003) * f; q.vx *= .98; q.vy = lerp(q.vy, .32 + wind.y * .02, .02);
+    } else {
+      q.vx += (Math.sin(time * .9 + q.ph) * .003 + wind.x * .003) * f; q.vx *= .98; q.vy = lerp(q.vy, -.18 + wind.y * .02, .02);
+    }
+    q.x += q.vx * f; q.y += q.vy * f;
+    if (q.life > q.max || q.y > H + 30 || q.y < -30 || q.x < -40 || q.x > W + 40) parts.splice(i, 1);
+  }
+}
+
+/* ---------- the real song: guitar picks, bass, voice and shape from song_map.json ---------- */
+function mapEvents(t) {
+  const G = SONG.guitar, B = SONG.bass;
+  while (gi < G.length && G[gi][0] <= t) { const v = G[gi][1] / 127; onPluck(v, v > .82 ? 0 : 1); gi++; }
+  while (bi < B.length && B[bi][0] <= t) { onBass(B[bi][1] / 127); bi++; }
+  const C = SONG.curves, k = Math.max(0, Math.min(C.master.length - 1, Math.floor(t * SONG.fps)));
+  vocalE = C.Vocals[k]; doubleE = C["Backing Vocals"][k];
+}
+function mapShape(t) {
+  const C = SONG.curves, k = Math.max(0, Math.min(C.master.length - 1, Math.floor(t * SONG.fps)));
+  padTarget = C.Synth[k] * .9; widen = 0;
+  const sec = SONG.sections.find(x => t >= x.start && t < x.end);
+  if (sec && sec.name === "Bridge") widen = .6;
+  if (t >= 192 && t < 210) { widen = -.45; padTarget *= .2; }   // the whisper
+  else if (t >= 210 && t < 221) widen = 5.8;                     // the soar: the whole year opens
+}
+function setLyric(i) {
+  lineIdx = i; elLyric.textContent = "";
+  if (i < 0 || !SONG) { elCentre.style.top = centreTop + "px"; return; }
+  const ws = SONG.lines[i].words;
+  ws.forEach((w, j) => { const sp = document.createElement("span"); sp.className = "w"; sp.textContent = w[0]; elLyric.appendChild(sp); if (j < ws.length - 1) elLyric.appendChild(document.createTextNode(" ")); });
+  elCentre.style.top = (CY - elLyric.offsetHeight / 2) + "px";
+}
+function currentLine(t) {
+  const L = SONG.lines;
+  for (let i = 0; i < L.length; i++) {
+    const w = L[i].words, s0 = w[0][1], e0 = w[w.length - 1][2], next = L[i + 1] ? L[i + 1].words[0][1] : Infinity;
+    if (t >= s0 - .6 && t < Math.min(next - .35, e0 + 2.4)) return i;
+  }
+  return -1;
+}
+
+/* ---------- update ---------- */
+function update(dt) {
+  // sound events
+  const at = ac ? ac.currentTime : 0;
+  while (vq.length && vq[0].t <= at) { const e = vq.shift(); if (mode === "playing") e.k === "pluck" ? onPluck(e.v, e.s) : onBass(e.v); }
+  readAnalyser();
+  if (hasMap && mode === "playing") mapEvents(songTime());
+  bassEnv *= Math.pow(.02, dt);
+
+  // song progress
+  const st = songTime(), dur = songDur(), prog = clamp(st / dur, 0, 1);
+  if (mode === "planting") {
+    rev = lerp(rev, 0, 1 - Math.pow(.02, dt)); songRev = 0;
+    if (!useFile && ac && ac.currentTime >= songStart) mode = "playing";
+    if (useFile && audioEl && !audioEl.paused && !seedAnim) mode = "playing";
+    if (!ac && performance.now() / 1000 >= songStart) mode = "playing";
+  }
+  if (mode === "playing") {
+    songRev = Math.max(0, prog * (P1 + .02));
+    rev = lerp(rev, view === "song" ? songRev : 1, 1 - Math.pow(.04, dt));
+    if (view === "song" && Math.abs(rev - songRev) < .003) rev = songRev;
+    if (hasMap) mapShape(st);
+    if (useFile && audioEl && (audioEl.ended || (audioEl.paused && songDur() - songTime() < .3 && songTime() > 1))) finish();
+    if (!useFile && ac) {
+      const sec = sectionAt(Math.floor(st / BAR));
+      padTarget = sec.f[3]; widen = sec.f[0] === "C" ? 1 : 0;
+      if (st >= SKETCH_DUR) finish();
+    }
+    if (!ac && !useFile) { /* silent fallback */ const s2 = performance.now() / 1000 - songStart; rev = clamp(s2 / SKETCH_DUR, 0, 1) * (P1 + .02); if (s2 > SKETCH_DUR) finish(); }
+  } else if (mode === "idle" || mode === "done") { rev = lerp(rev, 1, 1 - Math.pow(.2, dt)); songRev = rev; padTarget = 0; widen = 0; }
+  padEnv = lerp(padEnv, padTarget, 1 - Math.pow(.25, dt));
+
+  // the hand and the lit window
+  const live = mode === "planting" || mode === "playing" || mode === "paused";
+  let target = view === "today" ? TODAY_P : SONG_P, hwT = .125;
+  if (live && view === "song") { target = clamp(songRev, 0, 1) - .018; hwT = .125 + widen * .07; }
+  if (mode === "done" && time < doneUntil) hwT = .62;
+  if (mode === "done" && time >= doneUntil) { mode = "idle"; }
+  if (view === "whole") hwT = .62;
+  if (time < holdUntil) { target = holdT; hwT = .125; }
+  if (dragging) { T = dragT; hwT = .125; }
+  else {
+    Tv += cdelta(T, target) * (mode === "playing" ? .12 : .035) * dt * 60; Tv *= Math.pow(mode === "playing" ? .55 : .82, dt * 60); T += Tv * dt * 60 * .5;
+  }
+  Hw = lerp(Hw, hwT, 1 - Math.pow(.25, dt));
+
+  // wind: pointer gusts plus a slow breeze
+  wind.tx *= Math.pow(.25, dt); wind.ty *= Math.pow(.25, dt);
+  const breeze = (Math.sin(time * .13) * Math.sin(time * .37 + 1.3) * 1.6 + Math.sin(time * .9) * .25) * MS;
+  wind.x = lerp(wind.x, wind.tx + breeze, 1 - Math.pow(.05, dt));
+  wind.y = lerp(wind.y, wind.ty + breeze * .2, 1 - Math.pow(.05, dt));
+  par.x = lerp(par.x, par.tx, 1 - Math.pow(.1, dt)); par.y = lerp(par.y, par.ty, 1 - Math.pow(.1, dt));
+  for (const l of LEAVES) l.pop *= Math.pow(.08, dt);
+  particles(dt);
+}
+
+/* ---------- geometry per frame ---------- */
+function twigPose(tw) {
+  const g = grow(tw.p);
+  const sway = (Math.sin(time * .55 * tw.sw + tw.ph) * .03 + Math.sin(time * 1.3 * tw.sw + tw.ph * 2) * .008) * (.5 + Math.min(tw.len, .35) * 4) * MS;
+  const dx = Math.cos(tw.dir), dy = Math.sin(tw.dir);
+  const wa = clamp((dx * wind.y - dy * wind.x) * .05 * (.4 + Math.min(tw.len, .4) * 4), -.4, .4);
+  const A = tw.dir + sway + wa, L = tw.len * (.15 + .85 * g);
+  const [bx, by] = tw.base;
+  const cxp = bx + Math.cos(A + tw.bend * .35) * L * .55, cyp = by + Math.sin(A + tw.bend * .35) * L * .55;
+  const ex = bx + Math.cos(A + tw.bend) * L, ey = by + Math.sin(A + tw.bend) * L;
+  tw.cur = { bx, by, cx: cxp, cy: cyp, ex, ey, g, wa, A };
+  tw.subs.forEach((s, k) => {
+    const [sxp, syp] = qpt(tw.cur, s.t), ta = qang(tw.cur, s.t);
+    const a = ta + s.da + wa * .5 + Math.sin(time * .9 + tw.ph + k) * .03 * MS, sl = s.len * g;
+    s.cur = { bx: sxp, by: syp, cx: sxp + Math.cos(a + s.bend * .4) * sl * .5, cy: syp + Math.sin(a + s.bend * .4) * sl * .5, ex: sxp + Math.cos(a + s.bend) * sl, ey: syp + Math.sin(a + s.bend) * sl };
+  });
+}
+function qpt(q, t) { const u = 1 - t; return [u * u * q.bx + 2 * u * t * q.cx + t * t * q.ex, u * u * q.by + 2 * u * t * q.cy + t * t * q.ey]; }
+function qang(q, t) { const u = 1 - t; return Math.atan2(2 * u * (q.cy - q.by) + 2 * t * (q.ey - q.cy), 2 * u * (q.cx - q.bx) + 2 * t * (q.ex - q.cx)); }
+
+/* ---------- draw ---------- */
+function strokeQuad(c, q, w0, w1) {
+  let [x0, y0] = [q.bx, q.by];
+  for (let i = 1; i <= 3; i++) { const t = i / 3, [x, y] = qpt(q, t); c.lineWidth = lerp(w0, w1, (i - 1) / 2); c.beginPath(); c.moveTo(x0, y0); c.lineTo(x, y); c.stroke(); x0 = x; y0 = y; }
+}
+function drawBranch(c, k, ox, oy) {
+  const base = [k, 0, 0, k, ox, oy];
+  c.setTransform(...base); c.lineCap = "round"; c.lineJoin = "round";
+  // twigs
+  for (const tw of TWIGS) {
+    twigPose(tw);
+    const g = tw.cur.g, w = litW(tw.p);
+    c.globalAlpha = .26 + .74 * g; c.strokeStyle = g > .02 ? tw.col(w) : tw.col(0);
+    strokeQuad(c, tw.cur, tw.w * (.6 + .4 * g), tw.w * .35);
+    for (const s of tw.subs) strokeQuad(c, s.cur, tw.w * .55, tw.w * .25);
+  }
+  // stem
+  for (let i = 0; i < STEM.length - 1; i++) {
+    const a = STEM[i], b = STEM[i + 1], g = grow(a.p);
+    c.globalAlpha = .3 + .7 * g; c.strokeStyle = a.col(g > .02 ? litW(a.p) : 0);
+    c.lineWidth = a.w * (.55 + .45 * g) * (a.p > rev - .02 && mode !== "idle" ? sstep((rev - a.p + .02) / .03) * .8 + .2 : 1);
+    c.beginPath(); c.moveTo(a.x, a.y); c.lineTo(b.x, b.y); c.stroke();
+  }
+  c.globalAlpha = 1;
+  // leaves
+  const wm = Math.hypot(wind.x, wind.y);
+  for (const l of LEAVES) {
+    const g = grow(l.p); if (g < .01) { l.cur = null; continue; }
+    const tw = l.tw, q = l.sub < 0 ? tw.cur : tw.subs[l.sub].cur;
+    const [x, y] = qpt(q, l.t); let a = l.abs + (tw.cur.A - tw.dir);
+    const dx = Math.cos(a), dy = Math.sin(a);
+    a += clamp((dx * wind.y - dy * wind.x) * .03, -.35, .35) + (Math.sin(time * 1.6 + l.ph) * .045 + wm * .008 * Math.sin(time * 9 + l.ph)) * MS;
+    const w = litW(l.p), sz = l.size * g * (1 + .28 * l.pop);
+    l.cur = { x, y, a };
+    c.fillStyle = l.col(w);
+    if (l.kind === "bud") {
+      c.setTransform(...base); c.save(); c.translate(x, y); c.rotate(a);
+      c.beginPath(); c.moveTo(0, -sz * .28); c.quadraticCurveTo(sz * 1.2, -sz * .62 * (1 + .3 * l.pop), sz * 2, 0); c.quadraticCurveTo(sz * 1.2, sz * .62 * (1 + .3 * l.pop), 0, sz * .28); c.closePath(); c.fill();
+      c.globalAlpha = .35; c.fillStyle = "rgb(150,70,52)"; c.beginPath(); c.ellipse(sz * 1.7, 0, sz * .32, sz * .2, 0, 0, TAU); c.fill(); c.globalAlpha = 1;
+      c.restore(); continue;
+    }
+    // petiole
+    const ra = a + Math.PI / 2, sc = k * sz;
+    const lx0 = x + Math.cos(a) * sz * l.pet, ly0 = y + Math.sin(a) * sz * l.pet;
+    c.setTransform(...base); c.strokeStyle = l.col(w * .85); c.lineWidth = Math.max(.004, sz * .035); c.globalAlpha = .9;
+    c.beginPath(); c.moveTo(x, y); c.lineTo(lx0, ly0); c.stroke();
+    const fold = l.fold;
+    c.setTransform(sc * fold * Math.cos(ra), sc * fold * Math.sin(ra), -sc * Math.sin(ra), sc * Math.cos(ra), ox + k * lx0, oy + k * ly0);
+    c.globalAlpha = .93; c.fill(MAPLE);
+    if (sz > .045) { c.globalAlpha = .1 + .12 * w; c.strokeStyle = "rgb(40,34,24)"; c.lineWidth = .02; c.beginPath(); c.moveTo(0, .05); c.lineTo(0, -.78); c.moveTo(0, -.15); c.lineTo(.5, -.55); c.moveTo(0, -.15); c.lineTo(-.5, -.55); c.stroke(); }
+    c.globalAlpha = 1;
+  }
+  // frost
+  c.setTransform(...base);
+  for (const f of FROST) {
+    const g = grow(f.p); if (g < .5) continue;
+    const [x, y] = f.fixed || qpt(f.sub < 0 ? f.tw.cur : f.tw.subs[f.sub].cur, f.t), w = litW(f.p);
+    c.globalAlpha = (.5 + .5 * Math.sin(time * .8 + f.ph) * .3) * g; c.strokeStyle = c.fillStyle = f.col(w);
+    if (f.star) { c.lineWidth = .0022; c.beginPath(); for (let j = 0; j < 3; j++) { const aa = j * Math.PI / 3 + f.ph; c.moveTo(x - Math.cos(aa) * f.size, y - Math.sin(aa) * f.size); c.lineTo(x + Math.cos(aa) * f.size, y + Math.sin(aa) * f.size); } c.stroke(); }
+    else { c.beginPath(); c.arc(x, y, f.size * .32, 0, TAU); c.fill(); }
+  }
+  c.globalAlpha = 1;
+}
+
+function drawMarks(c, k, ox, oy) {
+  c.setTransform(k, 0, 0, k, ox, oy); c.lineCap = "round";
+  // release marks inside the ring: one tick per song, at its real Friday
+  for (const g of REL_GROUPS) {
+    const a = angAt(g.p), ca = Math.cos(a), sa = Math.sin(a);
+    g.items.forEach((r, j) => {
+      const out = g.date <= viewDate, r0 = .855 - j * .045, r1 = r0 - .03;
+      const col = SEASONS[r.season].col, w = litW(g.p);
+      c.strokeStyle = out ? css(mixc(ghostOf(col), col, .35 + .65 * w)) : css(mixc(PAPER, [190, 182, 168], .55 + .25 * w));
+      c.lineWidth = out ? .0075 : .005;
+      c.beginPath(); c.moveTo(ca * r0, sa * r0); c.lineTo(ca * r1, sa * r1); c.stroke();
+      if (r.title === "Watch You Grow" && !out) { c.fillStyle = css(mixc(ghostOf(col), col, .5 + .5 * w)); c.beginPath(); c.arc(ca * (r1 - .03), sa * (r1 - .03), .007, 0, TAU); c.fill(); }
+    });
+  }
+  // the hand: where the year is right now
+  const showHand = dragging || mode === "playing" || mode === "paused" || (view === "today" && Hw < .3);
+  if (showHand) {
+    const a = angAt(T), r = radAt(T), s = SEASONS[seasonOf(T)].col;
+    c.globalAlpha = dragging ? 1 : .8;
+    c.strokeStyle = css(s); c.lineWidth = .006;
+    c.beginPath(); c.moveTo(Math.cos(a) * .9, Math.sin(a) * .9); c.lineTo(Math.cos(a) * .78, Math.sin(a) * .78); c.stroke();
+    if (dragging) { c.lineWidth = .0045; c.beginPath(); c.arc(Math.cos(a) * r, Math.sin(a) * r, .045 + bassEnv * .01, 0, TAU); c.stroke(); }
+    c.globalAlpha = 1;
+  }
+  // ripples from plucks
+  for (let i = ripples.length - 1; i >= 0; i--) {
+    const rp = ripples[i], t = (time - rp.t0) / (rp.big ? 1.6 : 1.1);
+    if (t > 1) { ripples.splice(i, 1); continue; }
+    c.globalAlpha = (1 - t) * .55; c.strokeStyle = css(rp.c); c.lineWidth = .004;
+    c.beginPath(); c.arc(rp.x, rp.y, .012 + t * (rp.big ? .11 : .06), 0, TAU); c.stroke();
+  }
+  c.globalAlpha = 1;
+  // the falling seed
+  if (seedAnim) {
+    const t = (time - seedAnim.t0) / 1.4;
+    if (t >= 1) { const [x, y] = seedAnim.to; ripples.push({ x, y, t0: time, c: SEASONS[0].col, big: true }); seedAnim = null; }
+    else {
+      const e = sstep(t), [fx, fy] = seedAnim.from, [tx, ty] = seedAnim.to;
+      const x = lerp(fx, tx, e) + Math.sin(t * 9) * .05 * (1 - t), y = lerp(fy, ty, e * e) - Math.sin(t * Math.PI) * .12;
+      c.save(); c.translate(x, y); c.rotate(Math.sin(t * 5) * .5); c.scale(.0034, .0034);
+      c.fillStyle = "rgb(138,106,70)"; c.beginPath(); c.ellipse(0, 0, 7.4, 5, 0, 0, TAU); c.fill();
+      c.strokeStyle = "rgba(179,150,114,.9)"; c.lineWidth = 1.1; c.beginPath(); c.moveTo(-4.6, -1.7); c.quadraticCurveTo(-1, -3.6, 2.8, -2.7); c.stroke();
+      c.restore();
+    }
+  }
+}
+
+function drawParts(c) {
+  c.setTransform(DPR, 0, 0, DPR, 0, 0);
+  for (const q of parts) {
+    const fade = Math.min(1, q.life / .6) * Math.min(1, (q.max - q.life) / 1.5);
+    if (q.k === "leaf") {
+      const fx = Math.cos(time * q.fr + q.flip);
+      c.save(); c.translate(q.x, q.y); c.rotate(q.rot + Math.PI / 2); c.scale(q.sz * fx, q.sz);
+      c.globalAlpha = .9 * fade; c.fillStyle = q.c; c.fill(MAPLE); c.restore();
+    } else {
+      c.globalAlpha = (q.k === "snow" ? .75 : .55) * fade * (q.k === "mote" ? .6 + .4 * Math.sin(time * 3 + q.ph) : 1);
+      c.fillStyle = css(q.c); c.beginPath(); c.arc(q.x, q.y, q.sz, 0, TAU); c.fill();
+    }
+  }
+  c.globalAlpha = 1;
+}
+
+function draw() {
+  const breathe = 1 + bassEnv * .007;
+  const k = R * DPR * breathe, ox = (CX + par.x) * DPR, oy = (CY + par.y) * DPR;
+  // branch layer
+  lx.setTransform(1, 0, 0, 1, 0, 0); lx.clearRect(0, 0, layer.width, layer.height);
+  drawBranch(lx, k, ox, oy);
+  // soft shadow from a quarter-size silhouette
+  sx.globalCompositeOperation = "source-over"; sx.clearRect(0, 0, small.width, small.height);
+  sx.drawImage(layer, 0, 0, small.width, small.height);
+  sx.globalCompositeOperation = "source-in"; sx.fillStyle = "rgb(60,44,30)"; sx.fillRect(0, 0, small.width, small.height);
+  // compose
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalCompositeOperation = "source-over"; ctx.globalAlpha = 1;
+  ctx.drawImage(paper, 0, 0);
+  if (false && padEnv > .01) { ctx.globalAlpha = padEnv * .05; ctx.fillStyle = "rgb(255,214,160)"; ctx.globalCompositeOperation = "multiply"; ctx.fillRect(0, 0, cv.width, cv.height); ctx.globalCompositeOperation = "source-over"; }
+  ctx.globalAlpha = .15; ctx.imageSmoothingEnabled = true;
+  ctx.drawImage(small, (2.5 + par.x * .3) * DPR, (4.5 + par.y * .3) * DPR, cv.width, cv.height);
+  ctx.globalAlpha = 1;
+  drawMarks(ctx, k, (CX + par.x * .55) * DPR, (CY + par.y * .55) * DPR);
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.drawImage(layer, 0, 0);
+  drawParts(ctx);
+  // tape grain
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalCompositeOperation = "multiply"; ctx.globalAlpha = .055;
+  const gx = REDUCE ? 0 : (Math.random() * 180) | 0, gy = REDUCE ? 0 : (Math.random() * 180) | 0;
+  ctx.translate(-gx, -gy); ctx.fillStyle = grainPat; ctx.fillRect(gx, gy, cv.width, cv.height);
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalCompositeOperation = "source-over"; ctx.globalAlpha = 1;
+}
+
+/* ---------- words in the circle ---------- */
+let uiKey = "";
+function setText(el, t) { if (el.textContent !== t) el.textContent = t; }
+function ui() {
+  let state;
+  if (dragging) state = "drag";
+  else if (mode === "planting" || mode === "playing" || mode === "paused") state = "play";
+  else if (Hw > .4) state = "whole";
+  else state = "today";
+
+  const s = seasonOf(T);
+  if (state === "drag") {
+    const near = nearestRelease(T), isToday = cdist(T, TODAY_P) < .5 / YEAR;
+    setText(elTitle, isToday ? "TODAY" : SEASONS[s].name.toUpperCase());
+    elTitle.style.color = css(SEASON_TEXT[s]);
+    if (near) {
+      const it = near.items;
+      const names = it.length > 1 ? it[0].label + " and " + it[1].label.split(" ")[1] : it[0].label + (it[0].title ? ": " + it[0].title : "");
+      setText(elSub, names + ". " + (near.date <= viewDate ? "Out now" : "Coming soon"));
+    } else setText(elSub, "");
+  } else if (state === "play") {
+    setText(elTitle, "WATCH YOU GROW"); elTitle.style.color = "";
+    setText(elSub, mode === "planting" ? "Planting" : fmt(songTime()) + " of " + fmt(songDur()));
+    if (hasMap) {
+      const t = songTime(), li = mode === "planting" ? -1 : currentLine(t);
+      if (li !== lineIdx) setLyric(li);
+      if (li >= 0) {
+        const ws = SONG.lines[li].words, spans = elLyric.children;
+        for (let j = 0; j < spans.length; j++) spans[j].classList.toggle("on", t >= ws[j][1] - .05);
+        const sc = t >= 192 && t < 210 ? .55 : 1;
+        elLyric.style.opacity = ((.72 + .28 * vocalE) * sc).toFixed(2);
+        const col = SEASONS[seasonOf(songRev)].col;
+        elLyric.style.textShadow = doubleE > .12 ? "1.5px 1.5px 0 rgba(" + col.join(",") + "," + (.18 + .3 * doubleE).toFixed(2) + ")" : "none";
+      }
+    }
+  } else if (state === "whole") {
+    setText(elTitle, "SEASØNS"); elTitle.style.color = ""; setText(elSub, "");
+  } else {
+    setText(elTitle, "BODHI X"); elTitle.style.color = ""; setText(elSub, "");
+  }
+  if (state !== "play" && lineIdx !== -1) setLyric(-1);
+  elTitle.hidden = state === "play" && lineIdx >= 0;
+  elSub.hidden = state === "play" && lineIdx >= 0;
+  const titleScale = state === "play" ? .62 : state === "drag" ? .8 : 1;
+  elTitle.style.transform = "scale(" + titleScale + ")";
+  const playingNow = state === "play";
+  const ctaSeason = state === "whole" ? SONG_SEASON : s;
+  const open = ctaSeason === SONG_SEASON && !PUBLIC;
+  elSeed.hidden = playingNow || !open;
+  elSoon.hidden = playingNow || open;
+  if (!open) {
+    setText(elSoonName, SEASONS[ctaSeason].name.toUpperCase() + " COMING SOON");
+    elSoonName.style.color = css(SEASON_TEXT[ctaSeason]);
+    setText(elSoonDate, "");
+  }
+  elArtist.classList.toggle("fade", state !== "whole");
+  corners.forEach(el => el.classList.toggle("on", state !== "whole" && !(view === "whole" && !dragging && time >= holdUntil) && +el.dataset.s === s));
+  const tt = mode === "idle" || mode === "done" ? fmt(songDur()) : fmt(songTime());
+  if (elTime.textContent !== tt) elTime.textContent = tt;
+}
+
+/* ---------- loop ---------- */
+function frame(now) {
+  const dt = Math.min(.05, (now - last) / 1000); last = now; time += dt;
+  update(dt); draw(); ui();
+  requestAnimationFrame(frame);
+}
+(PUBLIC ? Promise.resolve({ ok: false }) : fetch("song.json")).then(r => r.ok ? r.json() : null).then(d => {
+  if (!d || useFile) return;
+  SONG = d; hasMap = true; useFile = true;
+  audioEl = new Audio("watch-you-grow-web.mp3"); audioEl.preload = "auto";
+  audioEl.addEventListener("ended", finish);
+  document.getElementById("trackMeta").textContent = "SPRING 01. " + fmt(d.duration);
+  document.getElementById("soundNote").textContent = "This is the master. Over its four minutes the branch grows around the whole year: your guitar picks unfold the leaves, the bass breathes the ring, the words appear as you sing them, the doubles echo them, the 3:12 whisper dims the year and the 3:30 soar opens all of it. You can load a different mix to try it.";
+  const box = document.getElementById("lyricsSheet"); let cur = "", p = null;
+  d.lines.forEach(l => {
+    if (l.section !== cur) { cur = l.section; const h = document.createElement("h4"); h.textContent = cur; box.appendChild(h); p = document.createElement("p"); box.appendChild(p); }
+    if (p.textContent) p.appendChild(document.createElement("br"));
+    p.appendChild(document.createTextNode(l.words.map(w => w[0]).join(" ")));
+  });
+}).catch(() => {});
+say("SEASØNS is four albums, one per season. Spring opens first. Drag around the circle to wind the year.", 10000);
+requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

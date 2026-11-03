@@ -1,0 +1,46 @@
+/* BODHI X tokens, generated from tokens/tokens.json. Single paper theme by design. */
+@font-face{font-family:Inter;src:url(../fonts/inter-variable-opsz-wght.woff2) format("woff2");font-weight:100 900;font-display:swap}
+:root{
+  --paper:#F6F3EA;
+  --paper-deep:#ECE8DE;
+  --ink:#282623;
+  --ink-2:#6E685F;
+  --ghost:#D8D2C6;
+  --spring:#528E42;
+  --summer:#DE8018;
+  --autumn:#BA5426;
+  --winter:#5C96BE;
+  --spring-text:#47733A;
+  --summer-text:#935B1D;
+  --autumn-text:#A84E26;
+  --winter-text:#496D85;
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:24px;
+  --space-6:32px;
+  --space-7:48px;
+  --space-8:64px;
+  --space-9:96px;
+  --radius-none:0px;
+  --radius-pill:999px;
+  --radius-round:50%;
+  --safe-top-9x16:250px;
+  --safe-bottom-9x16:420px;
+  --safe-right-9x16:140px;
+  --safe-left-9x16:64px;
+  --cover-margin:6.25%;
+  --endscreen-clear-16x9:44%;
+  --font-inter:Inter, "Helvetica Neue", Arial, sans-serif;
+  color-scheme:light;
+}
+.mark{font-family:var(--font-inter);font-size:44px;line-height:1.1;font-weight:300;letter-spacing:0.30em;font-variation-settings:"opsz" 32;text-transform:uppercase}
+.title{font-family:var(--font-inter);font-size:22px;line-height:1.2;font-weight:300;letter-spacing:0.30em;font-variation-settings:"opsz" 32;text-transform:uppercase}
+.label{font-family:var(--font-inter);font-size:13px;line-height:1.4;font-weight:400;letter-spacing:0.26em;font-variation-settings:"opsz" 32;text-transform:uppercase}
+.ui{font-family:var(--font-inter);font-size:11px;line-height:1.3;font-weight:400;letter-spacing:0.24em;font-variation-settings:"opsz" 32;text-transform:uppercase}
+.lyric-lg{font-family:var(--font-inter);font-size:32px;line-height:1.4;font-weight:300;letter-spacing:0.01em;font-variation-settings:"opsz" 32}
+.lyric{font-family:var(--font-inter);font-size:20px;line-height:1.5;font-weight:300;letter-spacing:0.01em;font-variation-settings:"opsz" 32}
+.body{font-family:var(--font-inter);font-size:15px;line-height:1.6;font-weight:400}
+.note{font-family:var(--font-inter);font-size:13px;line-height:1.45;font-weight:400}
+.domain{font-family:var(--font-inter);font-size:15px;line-height:1.3;font-weight:400;letter-spacing:0.10em}

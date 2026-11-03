@@ -1,0 +1,70 @@
+/* BODHI X spine components. Class prefix bx-. Values come from tokens.css; fallbacks match tokens.json. */
+.bx{font-family:var(--font-inter,Inter,"Helvetica Neue",Arial,sans-serif);color:var(--ink,#282623);-webkit-font-smoothing:antialiased}
+.bx-caps{text-transform:uppercase;font-weight:300;font-variation-settings:"opsz" 32;letter-spacing:.30em;margin-right:-.30em}
+.bx-mark{font-size:44px;line-height:1.1}
+.bx-title{font-size:22px;line-height:1.2}
+.bx-label{font-size:13px;line-height:1.4;font-weight:400;letter-spacing:.26em;margin-right:-.26em}
+.bx-domain{font-size:15px;letter-spacing:.10em;font-weight:400}
+.bx-note{font-size:13px;line-height:1.45;color:var(--ink-2,#6E685F)}
+.bx-lyric{font-weight:300;font-variation-settings:"opsz" 32;font-size:20px;line-height:1.5;letter-spacing:.01em;text-wrap:balance}
+.bx-lyric .w{opacity:.28;transition:opacity .35s ease}
+.bx-lyric .w.on{opacity:1}
+.bx-spring{color:var(--spring-text,#47733A)}.bx-summer{color:var(--summer-text,#935B1D)}.bx-autumn{color:var(--autumn-text,#A84E26)}.bx-winter{color:var(--winter-text,#496D85)}
+.bx-lg-spring{color:var(--spring,#528E42)}.bx-lg-summer{color:var(--summer,#DE8018)}.bx-lg-autumn{color:var(--autumn,#BA5426)}.bx-lg-winter{color:var(--winter,#5C96BE)}
+.bx-stage{background:var(--paper,#F6F3EA);padding:24px 16px;display:flex;gap:32px;flex-wrap:wrap;align-items:center;justify-content:center}
+
+/* season stack */
+.bx-stack{display:inline-flex;flex-direction:column;gap:6px;font-size:13px}
+.bx-stack.right{align-items:flex-end;text-align:right}
+
+/* track line: the end card's text stack */
+.bx-trackline{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+
+/* end card */
+.bx-endcard{position:relative;aspect-ratio:9/16;width:270px;max-width:100%;background:var(--paper,#F6F3EA);display:flex;flex-direction:column;align-items:center;padding-top:7.8%}
+.bx-endcard img{width:87%;aspect-ratio:1;box-shadow:0 8px 22px rgba(40,38,35,.16);display:block}
+.bx-endcard .bx-trackline{margin-top:7%;gap:6px}
+.bx-endcard .bx-label{font-size:8px}.bx-endcard .bx-title{font-size:13px}.bx-endcard .bx-domain{font-size:8px}
+
+/* paper tab on a song world */
+.bx-tab{display:inline-flex;flex-direction:column;align-items:center;gap:8px;background:var(--paper,#F6F3EA);padding:14px 28px}
+.bx-tab .bx-title{font-size:15px}.bx-tab .bx-label{font-size:10px}
+
+/* web: actions */
+.bx-tb{background:none;border:0;padding:0;min-height:44px;cursor:pointer;color:var(--ink-2,#6E685F);font:inherit;font-size:11px;font-weight:400;letter-spacing:.24em;text-transform:uppercase;font-variation-settings:"opsz" 32;border-bottom:1px solid transparent;transition:color .3s}
+.bx-tb:hover,.bx-tb[aria-pressed="true"]{color:var(--ink,#282623)}
+.bx-tb[aria-pressed="true"]{border-bottom-color:currentColor}
+.bx-seed{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:6px 20px 6px 12px;border:1px solid var(--ghost,#D8D2C6);border-radius:var(--radius-pill,999px);background:var(--paper,#F6F3EA);color:var(--ink,#282623);cursor:pointer;font:inherit;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-variation-settings:"opsz" 32;transition:border-color .3s}
+.bx-seed:hover{border-color:var(--ink-2,#6E685F)}
+.bx-round{width:46px;height:46px;border-radius:50%;border:1px solid var(--ghost,#D8D2C6);background:transparent;display:grid;place-items:center;color:var(--ink,#282623);cursor:pointer;transition:border-color .3s}
+.bx-round:hover{border-color:var(--ink-2,#6E685F)}
+.bx-round svg{width:18px;height:18px}
+.bx-round.small{width:40px;height:40px;color:var(--ink-2,#6E685F)}.bx-round.small svg{width:12px;height:12px}
+:focus-visible{outline:2px solid var(--ink,#282623);outline-offset:4px}
+
+/* web: player dock */
+.bx-dock{display:flex;align-items:center;gap:14px;max-width:520px;width:100%}
+.bx-dock .trk{flex:1;min-width:0}
+.bx-dock .trk p{margin:0}
+.bx-time{font-size:12px;color:var(--ink-2,#6E685F);font-variant-numeric:tabular-nums}
+
+/* web: song list */
+.bx-songs{list-style:none;margin:0;padding:0;max-width:520px;width:100%}
+.bx-song{display:grid;grid-template-columns:3.5em 1fr auto;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--ghost,#D8D2C6)}
+.bx-song .n{font-size:12px;color:var(--ink-2,#6E685F);font-variant-numeric:tabular-nums;letter-spacing:.1em}
+.bx-song .t{font-size:13px;letter-spacing:.26em;text-transform:uppercase;font-variation-settings:"opsz" 32;font-weight:400}
+.bx-song .s{font-size:12px;color:var(--ink-2,#6E685F)}
+.bx-song.waiting .t{color:var(--ink-2,#6E685F)}
+.bx-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:8px;vertical-align:1px;background:var(--ghost,#D8D2C6)}
+.bx-dot.spring{background:var(--spring,#528E42)}.bx-dot.summer{background:var(--summer,#DE8018)}.bx-dot.autumn{background:var(--autumn,#BA5426)}.bx-dot.winter{background:var(--winter,#5C96BE)}
+
+/* web: era room */
+.bx-eras{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--ghost,#D8D2C6);border:1px solid var(--ghost,#D8D2C6);max-width:640px;width:100%}
+.bx-era{background:var(--paper,#F6F3EA);padding:24px 20px;display:flex;flex-direction:column;gap:10px;min-height:140px}
+.bx-era .mark{width:40px;height:40px}
+.bx-era.closed{background:var(--paper-deep,#ECE8DE)}
+.bx-era.closed .bx-title{color:var(--ink-2,#6E685F)}
+
+/* web: credits */
+.bx-credits{display:grid;grid-template-columns:auto 1fr;gap:4px 18px;font-size:14px;margin:0}
+.bx-credits dt{color:var(--ink-2,#6E685F)}.bx-credits dd{margin:0}
