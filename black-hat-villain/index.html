@@ -22,6 +22,7 @@
 <link rel="preload" href="/assets/rooms/black-hat-villain/oswald-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/tokens/tokens.css">
 <link rel="stylesheet" href="/assets/css/bodhix.css">
+<script src="/assets/js/dock.js" defer></script>
 <style>
 @font-face{font-family:"Oswald";src:url("/assets/rooms/black-hat-villain/oswald-latin-400-normal.woff2") format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Oswald";src:url("/assets/rooms/black-hat-villain/oswald-latin-600-normal.woff2") format("woff2");font-weight:600;font-display:swap}
@@ -92,6 +93,10 @@ h2::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--bh
 .go{display:flex;flex-wrap:wrap;gap:12px}
 .go a{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;text-decoration:none;font-family:"Oswald",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;border:2px solid var(--bhv-bone);color:var(--bhv-bone);transition:background .2s,color .2s,border-color .2s}
 .go .ico{width:20px;height:20px;fill:currentColor;flex:none}
+.go button{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 22px;font-family:"Oswald",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;border:2px solid var(--bhv-blood);background:var(--bhv-blood);color:#fff;cursor:pointer}
+.go button.is-loaded{background:transparent;color:var(--bhv-bone);border-color:var(--bhv-bone)}
+.play-row{margin:0 0 18px}
+h1[tabindex="-1"]:focus{outline:none}
 .go a.hot{background:var(--bhv-blood);border-color:var(--bhv-blood);color:#fff}
 .go a:hover,.go a:focus-visible{background:var(--bhv-bone);border-color:var(--bhv-bone);color:var(--bhv-black)}
 a:focus-visible{outline:2px solid var(--bhv-blood);outline-offset:3px}
@@ -130,7 +135,7 @@ a:focus-visible{outline:2px solid var(--bhv-blood);outline-offset:3px}
 
   <section class="listen" aria-labelledby="listen-h">
     <h2 id="listen-h">Listen</h2>
-    <iframe class="player" title="My Generation by Black Hat Villain, on Bandcamp" loading="lazy" src="https://bandcamp.com/EmbeddedPlayer/album=2894257248/size=large/bgcol=1c1a18/linkcol=c4271e/tracklist=false/artwork=none/transparent=true/" seamless></iframe>
+    <div class="go play-row"><button type="button" class="hot play-album" data-album="2894257248" data-title="My Generation" data-room="Black Hat Villain" data-room-href="/black-hat-villain/" data-cover="/assets/rooms/black-hat-villain/my-generation-600.jpg"><svg class="ico" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg><span class="pa-label">Play My Generation</span></button></div>
     <ol class="tracks" aria-label="My Generation track list">
       <li><span class="t">My Generation</span><span class="d">3:14</span></li>
       <li><span class="t">One Way Street</span><span class="d">2:56</span></li>

@@ -21,6 +21,7 @@
 <link rel="preload" href="/assets/rooms/fonts/caveat-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/tokens/tokens.css">
 <link rel="stylesheet" href="/assets/css/bodhix.css">
+<script src="/assets/js/dock.js" defer></script>
 <style>
 @font-face{font-family:"Caveat";src:url("/assets/rooms/fonts/caveat-latin-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
 @font-face{font-family:"Work Sans";src:url("/assets/rooms/fonts/work-sans-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
@@ -69,6 +70,11 @@ h3{font-family:var(--title-font);font-weight:400;margin:0 0 6px;font-size:28px;l
 .btn{display:flex;align-items:center;gap:12px;min-height:52px;padding:0 18px;text-decoration:none;font-family:var(--label-font);font-weight:600;font-size:14px;letter-spacing:.16em;text-transform:uppercase;border:2px solid var(--ink);color:var(--ink);background:transparent;transition:background .2s,color .2s,border-color .2s}
 .btn .ico{width:20px;height:20px;fill:currentColor;flex:none}
 .btn.hot{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+button.btn{font:inherit;font-family:var(--label-font);font-weight:600;font-size:14px;letter-spacing:.16em;text-transform:uppercase;width:100%;cursor:pointer;text-align:left}
+.play-album.is-loaded{background:transparent;color:var(--ink);border-color:var(--ink)}
+.play-row{margin:0 0 14px}
+.cover-note{margin:8px 0 0;font-size:13px;color:var(--ink-2);font-style:italic;line-height:1.4}
+h1[tabindex="-1"]:focus{outline:none}
 .btn:hover,.btn:focus-visible{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .foot{position:relative;z-index:1;margin-top:64px;padding:22px max(16px,env(safe-area-inset-left,0px)) calc(env(safe-area-inset-bottom,0px) + 26px);border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center;font-family:"Inter",system-ui,sans-serif;font-size:12px;color:var(--ink-2)}
@@ -86,7 +92,7 @@ h1{font-size:clamp(72px,17vw,150px);font-weight:700;line-height:.8;letter-spacin
 </header>
 <main class="wrap">
 <div class="hero">
-  <figure class="cover"><img src="/assets/rooms/the-next-t-shirt/the-next-t-shirt-1200.jpg" srcset="/assets/rooms/the-next-t-shirt/the-next-t-shirt-600.jpg 600w, /assets/rooms/the-next-t-shirt/the-next-t-shirt-1200.jpg 500w" sizes="(min-width:760px) 440px, 92vw" width="500" height="500" alt="the next t-shirt, written by hand in black marker with a red the."></figure>
+  <figure class="cover"><img src="/assets/rooms/the-next-t-shirt/the-next-t-shirt-1200.jpg" srcset="/assets/rooms/the-next-t-shirt/the-next-t-shirt-600.jpg 600w, /assets/rooms/the-next-t-shirt/the-next-t-shirt-1200.jpg 500w" sizes="(min-width:760px) 440px, 92vw" width="500" height="500" alt="the next t-shirt, written by hand in black marker with a red the."><figcaption class="cover-note">The cover here is not the original album art.</figcaption></figure>
   <div><p class="kicker">Vancouver · 2003 to 2005</p><h1><span class="the">the</span>next t&#8209;shirt</h1><p class="lede">A Vancouver trio. Two records, made before YouTube and all of that.</p></div>
 </div>
 <section class="story" aria-labelledby="s1"><h2 id="s1">The story</h2>
@@ -95,13 +101,13 @@ h1{font-size:clamp(72px,17vw,150px);font-weight:700;line-height:.8;letter-spacin
 </section>
 <section aria-labelledby="s2"><h2 id="s2">Listen</h2>
 <div class="album">
-  <figure class="cover"><img src="/assets/rooms/the-next-t-shirt/the-next-t-shirt-1200.jpg" srcset="/assets/rooms/the-next-t-shirt/the-next-t-shirt-600.jpg 600w, /assets/rooms/the-next-t-shirt/the-next-t-shirt-1200.jpg 500w" sizes="(min-width:760px) 220px, 92vw" width="500" height="500" alt="Cover of the next t-shirt" loading="lazy"></figure>
+  <figure class="cover"><img src="/assets/rooms/the-next-t-shirt/the-next-t-shirt-1200.jpg" srcset="/assets/rooms/the-next-t-shirt/the-next-t-shirt-600.jpg 600w, /assets/rooms/the-next-t-shirt/the-next-t-shirt-1200.jpg 500w" sizes="(min-width:760px) 220px, 92vw" width="500" height="500" alt="Cover of the next t-shirt" loading="lazy"><figcaption class="cover-note">The cover here is not the original album art.</figcaption></figure>
   <div>
     <h3><span class="the">the</span> next t&#8209;shirt</h3>
     <p class="meta">2003 · 8 songs</p>
-    <iframe class="player" style="height:120px" title="the next t-shirt on Bandcamp" loading="lazy" src="https://bandcamp.com/EmbeddedPlayer/album=2606593752/size=large/bgcol=ffffff/linkcol=a8201a/tracklist=false/artwork=none/transparent=true/" seamless></iframe>
+    <div class="btns play-row"><button type="button" class="btn hot play-album" data-album="2606593752" data-title="the next t-shirt" data-room="The Next T-Shirt" data-room-href="/the-next-t-shirt/" data-cover="/assets/rooms/the-next-t-shirt/the-next-t-shirt-600.jpg"><svg class="ico" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg><span class="pa-label">Play the next t-shirt</span></button></div>
     <ol class="tracks" aria-label="the next t-shirt track list"><li><span class="t">Blame The Day</span><span class="d">5:46</span></li><li><span class="t">Who Am I To Say?</span><span class="d">1:31</span></li><li><span class="t">Leisure Party</span><span class="d">4:16</span></li><li><span class="t">Don&#x27;t Break My Heart</span><span class="d">3:57</span></li><li><span class="t">Graveyard Memories</span><span class="d">4:05</span></li><li><span class="t">The Next T-Shirt</span><span class="d">5:56</span></li><li><span class="t">Monsters</span><span class="d">7:09</span></li><li><span class="t">The New Frontiersmen</span><span class="d">8:38</span></li></ol>
-    <p class="note">The cover here is not the original album art.</p>
+    
     <div class="btns" style="margin-top:16px"><a class="btn hot" href="https://scottytuesday.bandcamp.com/album/the-next-t-shirt" target="_blank" rel="me noopener"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-bandcamp"/></svg><span>the next t-shirt on Bandcamp</span></a></div>
   </div>
 </div>
@@ -110,7 +116,7 @@ h1{font-size:clamp(72px,17vw,150px);font-weight:700;line-height:.8;letter-spacin
   <div>
     <h3>The Fifth Floor</h3>
     <p class="meta">2005 · EP · 5 songs</p>
-    <iframe class="player" style="height:120px" title="The Fifth Floor on Bandcamp" loading="lazy" src="https://bandcamp.com/EmbeddedPlayer/album=2177376273/size=large/bgcol=ffffff/linkcol=a8201a/tracklist=false/artwork=none/transparent=true/" seamless></iframe>
+    <div class="btns play-row"><button type="button" class="btn hot play-album" data-album="2177376273" data-title="The Fifth Floor" data-room="The Next T-Shirt" data-room-href="/the-next-t-shirt/" data-cover="/assets/rooms/the-next-t-shirt/the-fifth-floor-600.jpg"><svg class="ico" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg><span class="pa-label">Play The Fifth Floor</span></button></div>
     <ol class="tracks" aria-label="The Fifth Floor track list"><li><span class="t">The Truce</span><span class="d">3:53</span></li><li><span class="t">Put You Away</span><span class="d">5:09</span></li><li><span class="t">War Bride</span><span class="d">5:09</span></li><li><span class="t">Dead End Love</span><span class="d">4:43</span></li><li><span class="t">Valley of the Dolls</span><span class="d">3:18</span></li></ol>
     
     <div class="btns" style="margin-top:16px"><a class="btn hot" href="https://scottytuesday.bandcamp.com/album/the-fifth-floor" target="_blank" rel="me noopener"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-bandcamp"/></svg><span>The Fifth Floor on Bandcamp</span></a></div>

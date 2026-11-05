@@ -89,3 +89,13 @@ Each older era can have its own room page at `/<room>/` that looks like that era
 - `/heavy-sun/`, `/the-next-t-shirt/`, `/the-originals/`, `/the-marriage-years/`: built by `tools/build-rooms.py` (text and track lists live in it; run it with the fonts and covers folders to rebuild). Each wears its album: Heavy Sun sunburst and marker type; the next t-shirt handwriting with the red "the"; the 2008 SEASONS circles in Baskerville with the four 2019 remaster covers; Unreleased Gems sky blue, orange and Josefin Sans. Fonts self-hosted in `assets/rooms/fonts/` with their licences.
 - Album covers that show Bodhi are fine (Bodhi, 2026-11-03): The Fifth Floor and Unreleased Gems use their real covers.
 - The home page shows only a blurb and an Enter the room button per room. All outside links live inside the rooms.
+
+## The player (assets/js/dock.js)
+
+One player for the whole site. Every album in a room has a Play button; it loads that album's Bandcamp player into a bar at the bottom of the screen (cover, album and room, a hide button and a close button). While the bar is loaded, links inside the site swap the page content instead of reloading, so the music keeps playing on every page, including Back and Forward.
+
+- Every page loads `/assets/js/dock.js` in its head. A new page needs that one line and nothing else.
+- A Play button is any element with `class="play-album"` and `data-album` (the Bandcamp album id), `data-title`, `data-room`, `data-room-href`, `data-cover`.
+- Pages with their own scripts must carry `<meta name="bx-isolate" content="1">` (the SEASØNS room does). While the player is loaded they open inside a frame above the bar, so their code never mixes with the player. Their site links still go through the player.
+- With the player closed, the site behaves like plain pages.
+- When SEASØNS songs go public, the SEASØNS room's own audio should pause the bar (or play through it). Decide then.

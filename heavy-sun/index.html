@@ -21,6 +21,7 @@
 <link rel="preload" href="/assets/rooms/fonts/permanent-marker-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/tokens/tokens.css">
 <link rel="stylesheet" href="/assets/css/bodhix.css">
+<script src="/assets/js/dock.js" defer></script>
 <style>
 @font-face{font-family:"Permanent Marker";src:url("/assets/rooms/fonts/permanent-marker-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:"Barlow Condensed";src:url("/assets/rooms/fonts/barlow-condensed-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
@@ -69,6 +70,11 @@ h3{font-family:var(--title-font);font-weight:400;margin:0 0 6px;font-size:28px;l
 .btn{display:flex;align-items:center;gap:12px;min-height:52px;padding:0 18px;text-decoration:none;font-family:var(--label-font);font-weight:600;font-size:14px;letter-spacing:.16em;text-transform:uppercase;border:2px solid var(--ink);color:var(--ink);background:transparent;transition:background .2s,color .2s,border-color .2s}
 .btn .ico{width:20px;height:20px;fill:currentColor;flex:none}
 .btn.hot{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+button.btn{font:inherit;font-family:var(--label-font);font-weight:600;font-size:14px;letter-spacing:.16em;text-transform:uppercase;width:100%;cursor:pointer;text-align:left}
+.play-album.is-loaded{background:transparent;color:var(--ink);border-color:var(--ink)}
+.play-row{margin:0 0 14px}
+.cover-note{margin:8px 0 0;font-size:13px;color:var(--ink-2);font-style:italic;line-height:1.4}
+h1[tabindex="-1"]:focus{outline:none}
 .btn:hover,.btn:focus-visible{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .foot{position:relative;z-index:1;margin-top:64px;padding:22px max(16px,env(safe-area-inset-left,0px)) calc(env(safe-area-inset-bottom,0px) + 26px);border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center;font-family:"Inter",system-ui,sans-serif;font-size:12px;color:var(--ink-2)}
@@ -86,7 +92,7 @@ body{font-size:19px;background-attachment:fixed}h1{font-size:clamp(56px,13vw,112
 </header>
 <main class="wrap">
 <div class="hero">
-  <figure class="cover"><img src="/assets/rooms/heavy-sun/greatest-hits-1200.jpg" srcset="/assets/rooms/heavy-sun/greatest-hits-600.jpg 600w, /assets/rooms/heavy-sun/greatest-hits-1200.jpg 500w" sizes="(min-width:760px) 440px, 92vw" width="500" height="500" alt="Heavy Sun Greatest Hits cover: a blazing orange sun with HEAVY SUN across it."></figure>
+  <figure class="cover"><img src="/assets/rooms/heavy-sun/greatest-hits-1200.jpg" srcset="/assets/rooms/heavy-sun/greatest-hits-600.jpg 600w, /assets/rooms/heavy-sun/greatest-hits-1200.jpg 500w" sizes="(min-width:760px) 440px, 92vw" width="500" height="500" alt="Heavy Sun Greatest Hits cover: a blazing orange sun with HEAVY SUN across it."><figcaption class="cover-note">The cover here is not the original album art.</figcaption></figure>
   <div><p class="kicker">Victoria to Vancouver · 1994 to 2002</p><h1>Heavy Sun</h1><p class="lede">The first band. Started at 19.</p></div>
 </div>
 <section class="story" aria-labelledby="s1"><h2 id="s1">The story</h2>
@@ -96,12 +102,12 @@ body{font-size:19px;background-attachment:fixed}h1{font-size:clamp(56px,13vw,112
 </section>
 <section aria-labelledby="s2"><h2 id="s2">Listen</h2>
 <div class="album">
-  <figure class="cover"><img src="/assets/rooms/heavy-sun/greatest-hits-1200.jpg" srcset="/assets/rooms/heavy-sun/greatest-hits-600.jpg 600w, /assets/rooms/heavy-sun/greatest-hits-1200.jpg 500w" sizes="(min-width:760px) 220px, 92vw" width="500" height="500" alt="Cover of Greatest Hits by Heavy Sun" loading="lazy"></figure>
+  <figure class="cover"><img src="/assets/rooms/heavy-sun/greatest-hits-1200.jpg" srcset="/assets/rooms/heavy-sun/greatest-hits-600.jpg 600w, /assets/rooms/heavy-sun/greatest-hits-1200.jpg 500w" sizes="(min-width:760px) 220px, 92vw" width="500" height="500" alt="Cover of Greatest Hits" loading="lazy"><figcaption class="cover-note">The cover here is not the original album art.</figcaption></figure>
   <div>
     <h3>Greatest Hits</h3>
     <p class="meta">Recordings 1994 to 2002 · 15 songs</p>
-    <iframe class="player" style="height:120px" title="Greatest Hits by Heavy Sun on Bandcamp" loading="lazy" src="https://bandcamp.com/EmbeddedPlayer/album=3177103140/size=large/bgcol=fbf3e2/linkcol=c8441c/tracklist=false/artwork=none/transparent=true/" seamless></iframe>
-    <ol class="tracks" aria-label="Greatest Hits by Heavy Sun track list"><li><span class="t">Lady Lucifer</span><span class="d">4:38</span></li><li><span class="t">Fall</span><span class="d">4:39</span></li><li><span class="t">Whose Gonna Tell Your Baby Boy You Think His Future Doesn&#x27;t Matter?</span><span class="d">5:58</span></li><li><span class="t">Mourning Light</span><span class="d">4:45</span></li><li><span class="t">Vision</span><span class="d">3:52</span></li><li><span class="t">Save The World</span><span class="d">3:53</span></li><li><span class="t">Princess</span><span class="d">3:32</span></li><li><span class="t">Million Dollar Sweepstakes</span><span class="d">3:24</span></li><li><span class="t">Awake</span><span class="d">5:42</span></li><li><span class="t">Goodnight Gentle Soul</span><span class="d">3:35</span></li><li><span class="t">Gone</span><span class="d">5:10</span></li><li><span class="t">I Found Love In U</span><span class="d">3:11</span></li><li><span class="t">Caveman</span><span class="d">5:23</span></li><li><span class="t">Chicken</span><span class="d">2:49</span></li><li><span class="t">Mommy</span><span class="d">4:04</span></li></ol>
+    <div class="btns play-row"><button type="button" class="btn hot play-album" data-album="3177103140" data-title="Greatest Hits" data-room="Heavy Sun" data-room-href="/heavy-sun/" data-cover="/assets/rooms/heavy-sun/greatest-hits-600.jpg"><svg class="ico" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg><span class="pa-label">Play Greatest Hits</span></button></div>
+    <ol class="tracks" aria-label="Greatest Hits track list"><li><span class="t">Lady Lucifer</span><span class="d">4:38</span></li><li><span class="t">Fall</span><span class="d">4:39</span></li><li><span class="t">Whose Gonna Tell Your Baby Boy You Think His Future Doesn&#x27;t Matter?</span><span class="d">5:58</span></li><li><span class="t">Mourning Light</span><span class="d">4:45</span></li><li><span class="t">Vision</span><span class="d">3:52</span></li><li><span class="t">Save The World</span><span class="d">3:53</span></li><li><span class="t">Princess</span><span class="d">3:32</span></li><li><span class="t">Million Dollar Sweepstakes</span><span class="d">3:24</span></li><li><span class="t">Awake</span><span class="d">5:42</span></li><li><span class="t">Goodnight Gentle Soul</span><span class="d">3:35</span></li><li><span class="t">Gone</span><span class="d">5:10</span></li><li><span class="t">I Found Love In U</span><span class="d">3:11</span></li><li><span class="t">Caveman</span><span class="d">5:23</span></li><li><span class="t">Chicken</span><span class="d">2:49</span></li><li><span class="t">Mommy</span><span class="d">4:04</span></li></ol>
     
     
   </div>

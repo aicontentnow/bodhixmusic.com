@@ -48,9 +48,12 @@ def tracks_html(tracks, label, collapse_after=None):
         return f'<details class="more-tracks"><summary>All {len(tracks)} songs</summary>{ol}</details>'
     return ol
 
-def player(album_id, title, bg, link, height=120):
-    return (f'<iframe class="player" style="height:{height}px" title="{html.escape(title)} on Bandcamp" loading="lazy" '
-            f'src="https://bandcamp.com/EmbeddedPlayer/album={album_id}/size=large/bgcol={bg}/linkcol={link}/tracklist=false/artwork=none/transparent=true/" seamless></iframe>')
+PLAY_ICO = '<svg class="ico" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg>'
+
+def play_button(album_id, title, room, room_href, cover_src):
+    return (f'<button type="button" class="btn hot play-album" data-album="{album_id}" data-title="{html.escape(title)}" '
+            f'data-room="{html.escape(room)}" data-room-href="{room_href}" data-cover="{cover_src}">{PLAY_ICO}'
+            f'<span class="pa-label">Play {html.escape(title)}</span></button>')
 
 def btn(href, label, icon, hot=False):
     return f'<a class="btn{" hot" if hot else ""}" href="{href}" target="_blank" rel="me noopener">{ico(icon)}<span>{label}</span></a>'
@@ -101,6 +104,11 @@ h3{font-family:var(--title-font);font-weight:400;margin:0 0 6px;font-size:28px;l
 .btn{display:flex;align-items:center;gap:12px;min-height:52px;padding:0 18px;text-decoration:none;font-family:var(--label-font);font-weight:600;font-size:14px;letter-spacing:.16em;text-transform:uppercase;border:2px solid var(--ink);color:var(--ink);background:transparent;transition:background .2s,color .2s,border-color .2s}
 .btn .ico{width:20px;height:20px;fill:currentColor;flex:none}
 .btn.hot{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+button.btn{font:inherit;font-family:var(--label-font);font-weight:600;font-size:14px;letter-spacing:.16em;text-transform:uppercase;width:100%;cursor:pointer;text-align:left}
+.play-album.is-loaded{background:transparent;color:var(--ink);border-color:var(--ink)}
+.play-row{margin:0 0 14px}
+.cover-note{margin:8px 0 0;font-size:13px;color:var(--ink-2);font-style:italic;line-height:1.4}
+h1[tabindex="-1"]:focus{outline:none}
 .btn:hover,.btn:focus-visible{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .foot{position:relative;z-index:1;margin-top:64px;padding:22px max(16px,env(safe-area-inset-left,0px)) calc(env(safe-area-inset-bottom,0px) + 26px);border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center;font-family:"Inter",system-ui,sans-serif;font-size:12px;color:var(--ink-2)}
@@ -134,6 +142,7 @@ def page(r):
 {preload}
 <link rel="stylesheet" href="/assets/tokens/tokens.css">
 <link rel="stylesheet" href="/assets/css/bodhix.css">
+<script src="/assets/js/dock.js" defer></script>
 <style>
 {fonts_css}
 :root{{{r["vars"]}}}
@@ -166,14 +175,16 @@ def copy_fonts(fonts):
         if os.path.exists(lic):
             shutil.copy(lic, os.path.join(d, f"LICENSE-{pkg}.txt"))
 
-def album_block(cov, title_html, meta, pid, ptitle, bg, link, tracks, collapse=None, note="", btns=""):
+NOT_ORIG = '<figcaption class="cover-note">The cover here is not the original album art.</figcaption>'
+
+def album_block(cov, title_html, meta, pid, ptitle, bg, link, tracks, collapse=None, note="", btns="", room=None, not_original=False):
     c1200, c600, w, h = cov
     return f'''<div class="album">
-  <figure class="cover"><img src="{c1200}" srcset="{c600} 600w, {c1200} {w}w" sizes="(min-width:760px) 220px, 92vw" width="{w}" height="{h}" alt="Cover of {html.escape(ptitle)}" loading="lazy"></figure>
+  <figure class="cover"><img src="{c1200}" srcset="{c600} 600w, {c1200} {w}w" sizes="(min-width:760px) 220px, 92vw" width="{w}" height="{h}" alt="Cover of {html.escape(ptitle)}" loading="lazy">{NOT_ORIG if not_original else ""}</figure>
   <div>
     <h3>{title_html}</h3>
     <p class="meta">{meta}</p>
-    {player(pid, ptitle, bg, link)}
+    <div class="btns play-row">{play_button(pid, ptitle, room[0], room[1], c600)}</div>
     {tracks_html(tracks, ptitle, collapse)}
     {f'<p class="note">{note}</p>' if note else ""}
     {f'<div class="btns" style="margin-top:16px">{btns}</div>' if btns else ""}
@@ -196,7 +207,7 @@ rooms.append(dict(
     vars='--bg:#FBF3E2;--ink:#1D1A17;--ink-2:#6B5E50;--title:#1D1A17;--accent:#C8441C;--on-accent:#fff;--rule:linear-gradient(90deg,#E8892B,#C8441C,transparent);--line:rgba(29,26,23,.14);--card:rgba(255,255,255,.6);--player-bg:#fff;--spine:#1D1A17;--cover-shadow:0 18px 40px rgba(120,60,10,.25);--title-font:"Permanent Marker",cursive;--label-font:"Barlow Condensed",sans-serif;--body-font:"Barlow Condensed",sans-serif;--page-bg:radial-gradient(60% 50% at 50% 0%,rgba(242,176,53,.35),transparent 70%),repeating-conic-gradient(from 0deg at 50% -10%,rgba(232,137,43,.10) 0 6deg,transparent 6deg 12deg),#FBF3E2',
     css='body{font-size:19px;background-attachment:fixed}h1{font-size:clamp(56px,13vw,112px);color:#1D1A17;transform:rotate(-2deg);text-shadow:4px 4px 0 #F2B035}.lede{font-size:22px}.tracks .t{font-size:19px}.kicker{color:#C8441C}',
     body=f'''<div class="hero">
-  <figure class="cover"><img src="{cov[0]}" srcset="{cov[1]} 600w, {cov[0]} {cov[2]}w" sizes="(min-width:760px) 440px, 92vw" width="{cov[2]}" height="{cov[3]}" alt="Heavy Sun Greatest Hits cover: a blazing orange sun with HEAVY SUN across it."></figure>
+  <figure class="cover"><img src="{cov[0]}" srcset="{cov[1]} 600w, {cov[0]} {cov[2]}w" sizes="(min-width:760px) 440px, 92vw" width="{cov[2]}" height="{cov[3]}" alt="Heavy Sun Greatest Hits cover: a blazing orange sun with HEAVY SUN across it.">{NOT_ORIG}</figure>
   <div><p class="kicker">Victoria to Vancouver · 1994 to 2002</p><h1>Heavy Sun</h1><p class="lede">The first band. Started at 19.</p></div>
 </div>
 <section class="story" aria-labelledby="s1"><h2 id="s1">The story</h2>
@@ -205,7 +216,7 @@ rooms.append(dict(
 <p>Greatest Hits is an unofficial look back at those years: fifteen songs, no official artwork, no official release. Just where it all started.</p>
 </section>
 <section aria-labelledby="s2"><h2 id="s2">Listen</h2>
-{album_block(cov, "Greatest Hits", "Recordings 1994 to 2002 · 15 songs", 3177103140, "Greatest Hits by Heavy Sun", "fbf3e2", "c8441c", gh_tracks, collapse=None)}
+{album_block(cov, "Greatest Hits", "Recordings 1994 to 2002 · 15 songs", 3177103140, "Greatest Hits", "fbf3e2", "c8441c", gh_tracks, collapse=None, room=("Heavy Sun","/heavy-sun/"), not_original=True)}
 </section>
 <section aria-labelledby="s3"><h2 id="s3">The band</h2>
 {lineup([("Scott Valentine","Vocals, lyrics, guitars"),("Jason Jarvis","Guitars, piano"),("Mike Boyenga","Bass"),("Steve MacMillan","Drums"),("Clayton Wolsey","Drums")])}
@@ -231,7 +242,7 @@ rooms.append(dict(
     vars='--bg:#FFFFFF;--ink:#161616;--ink-2:#6A6A6A;--title:#161616;--accent:#A8201A;--on-accent:#fff;--rule:#161616;--line:rgba(0,0,0,.12);--card:#fff;--player-bg:#fff;--spine:#161616;--cover-shadow:0 0 0 1px rgba(0,0,0,.1),0 14px 30px rgba(0,0,0,.12);--title-font:"Caveat",cursive;--label-font:"Work Sans",sans-serif;--body-font:"Work Sans",sans-serif;--page-bg:repeating-linear-gradient(0deg,transparent 0 31px,rgba(70,110,200,.07) 31px 32px),#fff',
     css='h1{font-size:clamp(72px,17vw,150px);font-weight:700;line-height:.8;letter-spacing:-.01em}h1 .the{color:#A8201A;display:block;font-size:.55em;transform:rotate(-4deg);transform-origin:left}h3{font-size:44px;font-weight:700}h3 .the{color:#A8201A}h2::after{height:1px}.btn{border-radius:2px}',
     body=f'''<div class="hero">
-  <figure class="cover"><img src="{cov_a[0]}" srcset="{cov_a[1]} 600w, {cov_a[0]} {cov_a[2]}w" sizes="(min-width:760px) 440px, 92vw" width="{cov_a[2]}" height="{cov_a[3]}" alt="the next t-shirt, written by hand in black marker with a red the."></figure>
+  <figure class="cover"><img src="{cov_a[0]}" srcset="{cov_a[1]} 600w, {cov_a[0]} {cov_a[2]}w" sizes="(min-width:760px) 440px, 92vw" width="{cov_a[2]}" height="{cov_a[3]}" alt="the next t-shirt, written by hand in black marker with a red the.">{NOT_ORIG}</figure>
   <div><p class="kicker">Vancouver · 2003 to 2005</p><h1><span class="the">the</span>next t&#8209;shirt</h1><p class="lede">A Vancouver trio. Two records, made before YouTube and all of that.</p></div>
 </div>
 <section class="story" aria-labelledby="s1"><h2 id="s1">The story</h2>
@@ -239,8 +250,8 @@ rooms.append(dict(
 <p>The first record took ten months, made in the drummer's apartment on the Lower East Side of Vancouver. The Fifth Floor came two years later, five songs cut at the Warehouse Studios, and it was the last thing the three of them recorded together.</p>
 </section>
 <section aria-labelledby="s2"><h2 id="s2">Listen</h2>
-{album_block(cov_a, '<span class="the">the</span> next t&#8209;shirt', "2003 · 8 songs", 2606593752, "the next t-shirt", "ffffff", "a8201a", nts_tracks, note="The cover here is not the original album art.", btns=btn(BC+"/album/the-next-t-shirt","the next t-shirt on Bandcamp","bandcamp",hot=True))}
-{album_block(cov_b, "The Fifth Floor", "2005 · EP · 5 songs", 2177376273, "The Fifth Floor", "ffffff", "a8201a", ff_tracks, btns=btn(BC+"/album/the-fifth-floor","The Fifth Floor on Bandcamp","bandcamp",hot=True))}
+{album_block(cov_a, '<span class="the">the</span> next t&#8209;shirt', "2003 · 8 songs", 2606593752, "the next t-shirt", "ffffff", "a8201a", nts_tracks, room=("The Next T-Shirt","/the-next-t-shirt/"), not_original=True, btns=btn(BC+"/album/the-next-t-shirt","the next t-shirt on Bandcamp","bandcamp",hot=True))}
+{album_block(cov_b, "The Fifth Floor", "2005 · EP · 5 songs", 2177376273, "The Fifth Floor", "ffffff", "a8201a", ff_tracks, room=("The Next T-Shirt","/the-next-t-shirt/"), btns=btn(BC+"/album/the-fifth-floor","The Fifth Floor on Bandcamp","bandcamp",hot=True))}
 </section>
 <section aria-labelledby="s3"><h2 id="s3">The band</h2>
 {lineup([("Scott Valentine","Vocals, lyrics, guitars"),("Keith Trusler","Bass"),("Clayton Wolsey","Drums, production")])}
@@ -299,7 +310,7 @@ h1.orig{font-size:clamp(44px,9vw,76px);font-weight:400;line-height:1.05;margin-b
   <div>
     <h3>Seasons</h3>
     <p class="meta">2008 · Original masters · 57 songs</p>
-    {player(4245630316, "Seasons (Original Masters)", "ffffff", "5e7fb8")}
+    <div class="btns play-row">{play_button(4245630316, "Seasons (Original Masters)", "The originals", "/the-originals/", cov_o[1])}</div>
     {grp_html}
     <div class="btns" style="margin-top:16px">{btn(BC+"/album/seasons-original-masters","Seasons on Bandcamp","bandcamp",hot=True)}</div>
   </div>
@@ -330,7 +341,7 @@ rooms.append(dict(
     vars='--bg:#F3FAFE;--ink:#1F2A33;--ink-2:#5B6C78;--title:#1F2A33;--accent:#D9602A;--on-accent:#fff;--rule:linear-gradient(90deg,#D9602A,#5BB04B,transparent);--line:rgba(31,42,51,.12);--card:rgba(255,255,255,.75);--player-bg:#fff;--spine:#1F2A33;--cover-shadow:0 18px 40px rgba(30,80,120,.22);--title-font:"Josefin Sans",sans-serif;--label-font:"Josefin Sans",sans-serif;--body-font:"Lora",serif;--page-bg:linear-gradient(180deg,#8CC8EC 0,#CFE8F7 380px,#F3FAFE 760px) no-repeat,#F3FAFE',
     css='h1{font-weight:300;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(44px,10vw,84px);line-height:1}h1 b{font-weight:600;color:#D9602A;display:block;font-size:.42em;letter-spacing:.22em;margin-bottom:10px}h3{font-weight:300;text-transform:uppercase;letter-spacing:.08em}.heart{color:#5BB04B}',
     body=f'''<div class="hero">
-  <figure class="cover"><img src="{cov_g[0]}" srcset="{cov_g[1]} 600w, {cov_g[0]} {cov_g[2]}w" sizes="(min-width:760px) 440px, 92vw" width="{cov_g[2]}" height="{cov_g[3]}" alt="Unreleased Gems cover: four photos of Scott Valentine singing and smiling under a blue sky, with the words UNRELEASED GEMS."></figure>
+  <figure class="cover"><img src="{cov_g[0]}" srcset="{cov_g[1]} 600w, {cov_g[0]} {cov_g[2]}w" sizes="(min-width:760px) 440px, 92vw" width="{cov_g[2]}" height="{cov_g[3]}" alt="Unreleased Gems cover: four photos of Scott Valentine singing and smiling under a blue sky, with the words UNRELEASED GEMS.">{NOT_ORIG}</figure>
   <div><p class="kicker">The songs in the drawer</p><h1><b>Unreleased Gems</b>The marriage years</h1><p class="lede">The songs that kept coming after the music was put away. More to add.</p></div>
 </div>
 <section class="story" aria-labelledby="s1"><h2 id="s1">The story</h2>
@@ -339,7 +350,7 @@ rooms.append(dict(
 <p>Many are early takes of SEASØNS songs, the same ones BODHI X is singing again now: Watch It Grow, Cheerleader, Jukebox, Freak In You, Rewind, Believe In This. There are more still to add.</p>
 </section>
 <section aria-labelledby="s2"><h2 id="s2">Listen</h2>
-{album_block(cov_g, "Unreleased Gems", "48 songs · and counting", 975750124, "Unreleased Gems", "ffffff", "d9602a", gems, collapse=12, btns=btn(BC+"/album/unreleased-gems","Unreleased Gems on Bandcamp","bandcamp",hot=True))}
+{album_block(cov_g, "Unreleased Gems", "48 songs · and counting", 975750124, "Unreleased Gems", "ffffff", "d9602a", gems, collapse=12, room=("The marriage years","/the-marriage-years/"), not_original=True, btns=btn(BC+"/album/unreleased-gems","Unreleased Gems on Bandcamp","bandcamp",hot=True))}
 </section>
 <section aria-labelledby="s3"><h2 id="s3">Who played</h2>
 {lineup([("Scott Valentine","Vocals, guitars, lyrics, other instruments"),("Clayton Wolsey","Drums, piano, guitar, production on several songs"),("Adam Sutherland","Guitars, bass, keys, production on Dirty Minds")])}
