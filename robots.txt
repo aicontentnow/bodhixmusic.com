@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /connect/
 Sitemap: https://bodhixmusic.com/sitemap.xml

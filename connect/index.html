@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Connect | BODHI X</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" type="image/svg+xml" href="/assets/marks/favicon.svg">
+<link rel="stylesheet" href="/assets/tokens/tokens.css">
+<link rel="stylesheet" href="/assets/css/bodhix.css">
+<link rel="stylesheet" href="/assets/css/site.css">
+<style>
+.wrap{max-width:46ch;margin:0 auto;display:grid;gap:var(--space-5);padding:var(--space-6) 0 var(--space-9);text-align:center}
+.wrap h1{margin:0;font-size:22px;letter-spacing:.30em;font-weight:300}
+.wrap p{margin:0}
+.box{display:grid;gap:var(--space-3);text-align:left;border:1px solid var(--ghost);padding:var(--space-4)}
+.box label{font-size:11px;letter-spacing:.26em;text-transform:uppercase}
+.box input,.code{width:100%;box-sizing:border-box;font:inherit;font-size:14px;padding:10px;border:1px solid var(--ghost);background:var(--paper);color:var(--ink)}
+.code{font-family:ui-monospace,Menlo,monospace;font-size:12px;word-break:break-all;min-height:60px}
+.row{display:flex;gap:var(--space-3);flex-wrap:wrap;justify-content:center}
+[hidden]{display:none!important}
+</style>
+</head>
+<body class="bx">
+<header class="site-head">
+  <a class="home" href="/" aria-label="BODHI X, home"><img src="/assets/marks/ring-year.svg" alt="" width="22" height="22"><span class="bx-caps">BODHI X</span></a>
+</header>
+<main>
+  <section class="wrap">
+    <h1 class="bx-caps">Connect</h1>
+
+    <!-- Step 1: start a sign-in -->
+    <div id="start">
+      <p class="bx-note">For BODHI X's own statistics. Sign in to an account; you will come straight back here with a one-time code.</p>
+      <div class="box">
+        <label for="svc">Account</label>
+        <select id="svc" class="code" style="min-height:0">
+          <option value="google">Google: YouTube and website numbers</option>
+          <option value="tiktok">TikTok</option>
+        </select>
+        <label for="cid">App ID (Google client ID or TikTok client key)</label>
+        <input id="cid" autocomplete="off" spellcheck="false" placeholder="paste it once; this browser remembers it">
+        <div class="row"><button class="bx-seed" id="go" type="button"><span>Sign in</span></button></div>
+      </div>
+    </div>
+
+    <!-- Step 2: back from the sign-in -->
+    <div id="back" hidden>
+      <p id="msg"></p>
+      <div class="box">
+        <label>One-time code</label>
+        <div class="code" id="code"></div>
+        <div class="row">
+          <button class="bx-seed" id="copy" type="button"><span>Copy code</span></button>
+          <a class="bx-seed" id="run" href="https://github.com/aicontentnow/bodhixmusic-analytics/actions/workflows/connect.yml"><span>Open Connect</span></a>
+        </div>
+      </div>
+      <p class="bx-note">In Connect: Run workflow, pick <b id="svcname"></b>, paste the code, Run. It works for a few minutes only.</p>
+    </div>
+  </section>
+</main>
+<script>
+(function () {
+  var REDIRECT = "https://bodhixmusic.com/connect/";
+  var CFG = {
+    google: {
+      auth: "https://accounts.google.com/o/oauth2/v2/auth",
+      params: function (id, state) {
+        return { client_id: id, redirect_uri: REDIRECT, response_type: "code",
+          access_type: "offline", prompt: "consent", include_granted_scopes: "true", state: state,
+          scope: ["https://www.googleapis.com/auth/youtube.readonly",
+                  "https://www.googleapis.com/auth/yt-analytics.readonly",
+                  "https://www.googleapis.com/auth/analytics.readonly"].join(" ") };
+      }
+    },
+    tiktok: {
+      auth: "https://www.tiktok.com/v2/auth/authorize/",
+      params: function (id, state) {
+        return { client_key: id, redirect_uri: REDIRECT, response_type: "code", state: state,
+          scope: "user.info.basic,user.info.stats,video.list" };
+      }
+    }
+  };
+  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+  function sess(k, v) { try { if (v === undefined) return sessionStorage.getItem(k); sessionStorage.setItem(k, v); } catch (e) { return null; } }
+  var svc = document.getElementById("svc"), cid = document.getElementById("cid");
+  function fill() { cid.value = store("bx-connect-" + svc.value) || ""; }
+  svc.addEventListener("change", fill); fill();
+
+  document.getElementById("go").addEventListener("click", function () {
+    var id = cid.value.trim(); if (!id) { cid.focus(); return; }
+    store("bx-connect-" + svc.value, id);
+    var rnd = Array.from(crypto.getRandomValues(new Uint8Array(12)), function (b) { return b.toString(16).padStart(2, "0"); }).join("");
+    var state = svc.value + "." + rnd; sess("bx-connect-state", state);
+    var p = CFG[svc.value].params(id, state);
+    location.href = CFG[svc.value].auth + "?" + new URLSearchParams(p).toString();
+  });
+
+  var q = new URLSearchParams(location.search);
+  if (q.has("code") || q.has("error")) {
+    document.getElementById("start").hidden = true; document.getElementById("back").hidden = false;
+    var state = q.get("state") || "", which = state.split(".")[0];
+    var msg = document.getElementById("msg");
+    document.getElementById("svcname").textContent = which || "the account";
+    if (q.has("error")) {
+      msg.textContent = "The sign-in didn't finish (" + (q.get("error_description") || q.get("error")) + "). Try again.";
+      document.getElementById("code").textContent = "";
+    } else {
+      var ok = state && state === sess("bx-connect-state");
+      msg.textContent = ok ? "Signed in. Copy this code and paste it into Connect." :
+        "This code didn't start from this browser. Only use it if you just signed in yourself.";
+      document.getElementById("code").textContent = q.get("code");
+    }
+    // Keep the code out of the address bar and history once it is shown.
+    history.replaceState(null, "", "/connect/");
+    document.getElementById("copy").addEventListener("click", function () {
+      var t = document.getElementById("code").textContent;
+      if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () {
+        document.querySelector("#copy span").textContent = "Copied";
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
