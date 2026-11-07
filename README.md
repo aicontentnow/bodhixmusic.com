@@ -99,3 +99,10 @@ One player for the whole site. Every album in a room has a Play button; it loads
 - Pages with their own scripts must carry `<meta name="bx-isolate" content="1">` (the SEASØNS room does). While the player is loaded they open inside a frame above the bar, so their code never mixes with the player. Their site links still go through the player.
 - With the player closed, the site behaves like plain pages.
 - When SEASØNS songs go public, the SEASØNS room's own audio should pause the bar (or play through it). Decide then.
+
+## Pre-save and Listen button (Watch You Grow)
+
+Two copies, both hidden now: under Enter SEASØNS on the home page (`index.html`) and in the SEASØNS notes (`seasons/index.html`), each a `<p class="presave-wrap" data-presave hidden>`.
+- **When the HyperFollow link exists (after the DistroKid upload, by Dec 17):** put the link in both `href=""` and delete `hidden` from both.
+- **Release day (Fri Mar 19, 2027):** change both labels from "Pre-save Watch You Grow" to "Listen to Watch You Grow". The HyperFollow link stays the same; it turns into store buttons by itself.
+- Later: Spotify and Apple artist pages go in the Follow list once they exist (icons are ready in the sprite).

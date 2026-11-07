@@ -74,3 +74,5 @@ a.room-link:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 .follow-link .ico{width:18px;height:18px;fill:currentColor;flex:none}
 .follow-link:hover,.follow-link:focus-visible{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 @media (max-width:420px){.follow .follow-links{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}.follow-links li{display:flex}.follow-link{flex:1;justify-content:center;padding:0 10px}}
+/* pre-save / listen button (hidden until the HyperFollow link exists) */
+.presave-wrap{margin:14px 0 0}.presave-wrap[hidden]{display:none}
